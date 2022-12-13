@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     AppComponent,
     NavbarComponent,
     NavbarChannelsComponent,
-    NavbarMessagesComponent
+    NavbarMessagesComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
