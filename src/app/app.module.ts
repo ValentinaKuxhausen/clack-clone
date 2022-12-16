@@ -25,6 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTreeModule} from '@angular/material/tree';
+import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component'; 
 
 @NgModule({
   declarations: [
@@ -33,10 +35,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarChannelsComponent,
     NavbarMessagesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarChannelsAddDialogComponent
   ],
   imports: [
-    AppRoutingModule,
+    AppRoutingModule,    
     AngularFireModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -53,6 +56,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatProgressBarModule,
     MatCardModule,
+    MatTreeModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
