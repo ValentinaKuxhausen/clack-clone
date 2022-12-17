@@ -1,1 +1,17 @@
-
+<div class="dialog-container">
+    <h1 mat-dialog-title>Add User</h1>
+    <div mat-dialog-content>
+        <div>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input [(ngModel)]="channel.theme" matInput placeholder="Last Name">
+                <!--  <mat-hint>Please enter a name.</mat-hint> -->
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label></mat-label>
+            <mat-label>E-Mail</mat-label>
+            <input [(ngModel)]="channel.description" matInput placeholder="E-Mail">
+            <!-- <mat-hint>Please enter a name.</mat-hint> -->
+        </mat-form-field>

@@ -26,7 +26,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTreeModule} from '@angular/material/tree';
-import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component'; 
+import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
+import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component'; 
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/n
     NavbarMessagesComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarChannelsAddDialogComponent
+    NavbarChannelsAddDialogComponent,
+    NavbarMessagesAddDialogComponent
   ],
   imports: [
     AppRoutingModule,    

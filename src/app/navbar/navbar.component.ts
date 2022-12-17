@@ -24,7 +24,16 @@ export class NavbarComponent {
   constructor(private dialog: MatDialog) {}
 
 
-  openDialog() {
+
+
+  newMessage() {
+    this.dialog.open(NavbarChannelsAddDialogComponent, {
+      width: '400px',
+      hasBackdrop: true
+    });
+  }
+  
+  newChannel() {
     this.dialog.open(NavbarChannelsAddDialogComponent, {
       width: '400px',
       hasBackdrop: true

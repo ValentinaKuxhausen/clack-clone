@@ -1,9 +1,9 @@
 <mat-drawer-container class="navbar-container" autosize>
     <ul>
         <li routerLink="channels"></li>
-        <li><mat-icon>add_box</mat-icon>Add Channels</li>
+        <li><button (click)="newChannel()"><mat-icon>add_box</mat-icon>Add Channels</button></li>
         <li routerLink="messages"></li>
-        <li ><button (click)="openDialog()"><mat-icon> add_box</mat-icon>Message</button></li>
+        <li ><button (click)="newMessage()"><mat-icon>add_box</mat-icon>Message</button></li>
     </ul>
   <!--  nach mat-tree, wenn Daten vorhanden sind. [dataSource]="dataSource" [treeControl]="treeControl" -->
     <mat-tree >
