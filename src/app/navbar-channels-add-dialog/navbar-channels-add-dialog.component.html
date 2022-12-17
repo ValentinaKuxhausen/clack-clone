@@ -1,17 +1,17 @@
 <div class="dialog-container">
-    <h1 mat-dialog-title>Add User</h1>
+    <h1 mat-dialog-title>Channels erstellen</h1>
+    <div>Channels are used by your team to communicate. Ideally, they should be topic-related - #marketing, for example.</div>
     <div mat-dialog-content>
-        <div>
-        
+        <div>        
             <mat-form-field appearance="outline">
-                <mat-label>Last Name</mat-label>
-                <input [(ngModel)]="channel.theme" matInput placeholder="Last Name">
+                <mat-label>Add </mat-label>
+                <input [(ngModel)]="channel.theme" matInput placeholder="# e.g. budget-planning">
                 <!--  <mat-hint>Please enter a name.</mat-hint> -->
             </mat-form-field>
         </div>
         <mat-form-field appearance="outline" class="full-width">
             <mat-label></mat-label>
-            <mat-label>E-Mail</mat-label>
-            <input [(ngModel)]="channel.description" matInput placeholder="E-Mail">
+            <mat-label>Description</mat-label>
+            <input [(ngModel)]="channel.description" matInput>
             <!-- <mat-hint>Please enter a name.</mat-hint> -->
         </mat-form-field>
