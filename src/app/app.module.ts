@@ -25,6 +25,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
+import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component'; 
 
 @NgModule({
   declarations: [
@@ -33,14 +37,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarChannelsComponent,
     NavbarMessagesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarChannelsAddDialogComponent,
+    NavbarMessagesAddDialogComponent
   ],
   imports: [
-    AppRoutingModule,
+    AppRoutingModule,    
     AngularFireModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    MatAutocompleteModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
@@ -53,6 +60,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatProgressBarModule,
     MatCardModule,
+    MatTreeModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
