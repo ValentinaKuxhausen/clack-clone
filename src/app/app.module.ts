@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component'; 
 
@@ -46,6 +47,7 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    MatAutocompleteModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatNativeDateModule,

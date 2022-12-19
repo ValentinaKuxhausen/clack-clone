@@ -1,13 +1,14 @@
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {Component} from '@angular/core';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { NavbarChannelsAddDialogComponent } from '../navbar-channels-add-dialog/navbar-channels-add-dialog.component';
+import { NavbarMessagesAddDialogComponent } from '../navbar-messages-add-dialog/navbar-messages-add-dialog.component';
 
 interface ChannelNode {
   expandable: boolean;
   channel: string;
-  children? : ChannelNode[];
+  children?: ChannelNode[];
 }
 
 @Component({
@@ -17,22 +18,15 @@ interface ChannelNode {
 })
 export class NavbarComponent {
 
-  addChannel() {}
-  addMessage() {}
+  addChannel() { }
+  addMessage() { }
 
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
 
 
 
-  newMessage() {
-    this.dialog.open(NavbarChannelsAddDialogComponent, {
-      width: '400px',
-      hasBackdrop: true
-    });
-  }
-  
   newChannel() {
     this.dialog.open(NavbarChannelsAddDialogComponent, {
       width: '400px',
@@ -40,6 +34,10 @@ export class NavbarComponent {
     });
   }
 
-
-
+  newMessage() {
+    this.dialog.open(NavbarMessagesAddDialogComponent, {
+      width: '400px',
+      hasBackdrop: true
+    });
+  }
 }
