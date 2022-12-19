@@ -1,6 +1,5 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<!-- <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
-    <!-- register -->
     <mat-card-header>
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
@@ -19,4 +18,58 @@
       <button mat-stroked-button color="accent" class="btn-block">Register</button>
     </form>
   </mat-card>
+</div> -->
+
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Sign Up</h3>
+      <div class="formGroup">
+        <input
+          type="email"
+          class="formControl"
+          placeholder="Email Address"
+          #userEmail
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <input
+          type="password"
+          class="formControl"
+          placeholder="Password"
+          #userPwd
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <input
+          type="button"
+          class="btn btnPrimary"
+          value="Sign Up"
+          (click)="AuthService.SignUp(userEmail.value, userPwd.value)"
+        />
+      </div>
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Or</span></span>
+      </div>
+      <!-- Continue with Google -->
+      <div class="formGroup">
+        <button
+          type="button"
+          class="btn googleBtn"
+          (click)="AuthService.GoogleAuth()"
+        >
+          <i class="fab fa-google-plus-g"></i>
+          Continue with Google
+        </button>
+      </div>
+    </div>
+    <div class="redirectToLogin">
+      <span
+        >Already have an account?
+        <span class="redirect" routerLink="/sign-in">Log In</span></span
+      >
+    </div>
+  </div>
 </div>

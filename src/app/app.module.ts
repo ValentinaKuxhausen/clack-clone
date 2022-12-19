@@ -29,6 +29,9 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component'; 
+import { AuthService } from './shared/services/auth.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
     LoginComponent,
     RegisterComponent,
     NavbarChannelsAddDialogComponent,
-    NavbarMessagesAddDialogComponent
+    NavbarMessagesAddDialogComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     AppRoutingModule,    
@@ -69,7 +74,7 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
      
   ],
 
-  providers: [],
+    providers: [AuthService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
