@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Channel } from 'src/models/channel.class';
+import { Channel } from 'src/models/channels.class';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-
-export interface State {
-  flag: string;
-  name: string;
-  population: string;
-}
 
 
 @Component({
@@ -20,29 +14,29 @@ export interface State {
 })
 
 export class NavbarChannelsAddDialogComponent {
-  stateCtrl = new FormControl('');
-  filteredStates: Observable<State[]>;
-
-
+  
   channel: Channel = new Channel();
+  stateCtrl = new FormControl('');
+  filteredChannels: Observable<Channel[]>;
+  filter: any;
 
   constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>) { 
-    this.filteredStates = this.stateCtrl.valueChanges.pipe(
+    this.filteredChannels = this.stateCtrl.valueChanges.pipe(
       startWith(''),
-      map(state => (state ? this._filterStates(state) : this.states.slice())),
+      map(channel => (channel ? this._filterStates(channel) : this.channel.slice())),
     );
   }
-
-  states: State[] = [];
 
   saveChannel() {
     console.log(this.channel)
   }
 
-  private _filterStates(value: string): State[] {
+  private _filterStates(value: string): Channel[] {
     const filterValue = value.toLowerCase();
-
-    return this.states.filter(state => state.name.toLowerCase().includes(filterValue));
+    return this.filter(channel => channel.theme.toLowerCase().includes(filterValue));
   }
 
 }
+
+
+/* */

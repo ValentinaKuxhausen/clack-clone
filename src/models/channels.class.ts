@@ -1,4 +1,7 @@
 export class Channel {
+  slice(): any {
+    throw new Error('Method not implemented.');
+  }
     id: string;;
     theme: string;
     description: string;
