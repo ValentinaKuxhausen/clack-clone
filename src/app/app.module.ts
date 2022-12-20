@@ -28,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
-import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component'; 
+import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
      
   ],
 
