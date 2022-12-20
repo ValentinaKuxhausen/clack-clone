@@ -12,7 +12,7 @@ export class LoginComponent {
   username = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
 
-  constructor(public AuthService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   // loginForm = new FormGroup({
   //   username : new FormControl('', Validators.required),

@@ -32,6 +32,7 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
 import { AuthService } from './shared/services/auth.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     NavbarChannelsAddDialogComponent,
     NavbarMessagesAddDialogComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    DashboardComponent
   ],
   imports: [
     AppRoutingModule,    

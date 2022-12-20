@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
-  selector: 'app-verify-email',
-  templateUrl: './verify-email.component.html',
-  styleUrls: ['./verify-email.component.sass']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.sass']
 })
-export class VerifyEmailComponent {
+export class DashboardComponent {
 
   constructor(public authService: AuthService) {}
 
 
+  
 }

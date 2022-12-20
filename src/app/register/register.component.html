@@ -47,7 +47,7 @@
           type="button"
           class="btn btnPrimary"
           value="Sign Up"
-          (click)="AuthService.SignUp(userEmail.value, userPwd.value)"
+          (click)="authService.SignUp(userEmail.value, userPwd.value)"
         />
       </div>
       <div class="formGroup">
@@ -58,7 +58,7 @@
         <button
           type="button"
           class="btn googleBtn"
-          (click)="AuthService.GoogleAuth()"
+          (click)="authService.GoogleAuth()"
         >
           <i class="fab fa-google-plus-g"></i>
           Continue with Google
