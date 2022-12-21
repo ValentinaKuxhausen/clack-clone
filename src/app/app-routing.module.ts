@@ -4,8 +4,11 @@ import { LoginComponent } from './login/login.component';
 import { NavbarChannelsComponent } from './navbar-channels/navbar-channels.component';
 import { NavbarMessagesComponent } from './navbar-messages/navbar-messages.component';
 import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'channels', component: NavbarChannelsComponent},
