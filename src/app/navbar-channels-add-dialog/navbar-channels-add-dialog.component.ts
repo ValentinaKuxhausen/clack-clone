@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Channel } from 'src/models/channels.class';
+import { Channel } from 'src/models/channel.class';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -14,7 +14,7 @@ import {map, startWith} from 'rxjs/operators';
 })
 
 export class NavbarChannelsAddDialogComponent {
-  
+  loading = false;
   channel: Channel = new Channel();
   stateCtrl = new FormControl('');
   filteredChannels: Observable<Channel[]>;
@@ -27,15 +27,22 @@ export class NavbarChannelsAddDialogComponent {
     );
   }
 
-  saveChannel() {
-    console.log(this.channel)
-  }
-
   private _filterStates(value: string): Channel[] {
     const filterValue = value.toLowerCase();
     return this.filter(channel => channel.theme.toLowerCase().includes(filterValue));
   }
 
+  saveChannel() {  
+    this.loading = true;
+    this.firestore
+      .collection('channels')
+      .add(this.channel.toJSON())
+      .then((result: any) => {
+        console.log('Adding user finished', result);
+      });
+    this.loading = false;
+    this.dialogRef.close();
+  }
 }
 
 

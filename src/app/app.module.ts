@@ -30,6 +30,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    MatSlideToggleModule,
     MatAutocompleteModule,
     BrowserModule,
     BrowserAnimationsModule,
