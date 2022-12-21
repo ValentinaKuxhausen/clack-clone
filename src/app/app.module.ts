@@ -56,6 +56,7 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    MatSlideToggleModule,
     MatAutocompleteModule,
     BrowserModule,
     BrowserAnimationsModule,
