@@ -33,6 +33,7 @@ import { AuthService } from './shared/services/auth.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     MatAutocompleteModule,
     BrowserModule,
     BrowserAnimationsModule,
