@@ -28,8 +28,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
+import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component'; 
+import { AuthService } from './shared/services/auth.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     RegisterComponent,
     NavbarChannelsAddDialogComponent,
-    NavbarMessagesAddDialogComponent
+    NavbarMessagesAddDialogComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
+    DashboardComponent
   ],
   imports: [
     AppRoutingModule,    
@@ -71,7 +79,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
      
   ],
 
-  providers: [],
+    providers: [AuthService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

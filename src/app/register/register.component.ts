@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,9 @@ export class RegisterComponent {
   email = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
 
+  constructor(public authService: AuthService) {}
 
+
+  
   
 }
