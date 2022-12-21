@@ -25,16 +25,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import { MatTreeModule } from '@angular/material/tree';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NavbarChannelsAddDialogComponent } from './navbar-channels-add-dialog/navbar-channels-add-dialog.component';
-import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component'; 
 import { AuthService } from './shared/services/auth.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 
 @NgModule({
   declarations: [
@@ -51,7 +50,7 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
     DashboardComponent
   ],
   imports: [
-    AppRoutingModule,    
+    AppRoutingModule,
     AngularFireModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -75,12 +74,11 @@ import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/n
     MatToolbarModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule,
-    NgbModule,
-     
+    ReactiveFormsModule   
+
   ],
 
-    providers: [AuthService],
+  providers: [AuthService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
