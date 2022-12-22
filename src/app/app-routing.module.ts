@@ -5,14 +5,18 @@ import { NavbarChannelsComponent } from './navbar-channels/navbar-channels.compo
 import { NavbarMessagesComponent } from './navbar-messages/navbar-messages.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full' },
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'channels', component: NavbarChannelsComponent},
-  {path: 'messages', component: NavbarMessagesComponent}
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'varify-email', component: VerifyEmailComponent },
+  { path: 'channels', component: NavbarChannelsComponent },
+  { path: 'messages', component: NavbarMessagesComponent },
 ];
 
 @NgModule({

@@ -32,8 +32,10 @@ import { AuthService } from './shared/services/auth.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     MatSlideToggleModule,
     MatAutocompleteModule,
     BrowserModule,

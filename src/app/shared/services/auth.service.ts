@@ -23,12 +23,14 @@ export class AuthService {
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
+        /**User ist eingeloggt */
+        // this.userData = user;
+        // localStorage.setItem('user', JSON.stringify(this.userData));
+        // JSON.parse(localStorage.getItem('user')!);
       } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        /**User ist nicht eingeloggt */
+        // localStorage.setItem('user', 'null');
+        // JSON.parse(localStorage.getItem('user')!);
       }
     });
   }
@@ -38,12 +40,9 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SetUserData(result.user);
-        this.afAuth.authState.subscribe((user) => {
-          if (user) {
-            this.router.navigate(['dashboard']);
-          }
-        });
+        console.log(result.user);
+        // this.SetUserData(result.user);
+      
       })
       .catch((error) => {
         window.alert(error.message);
@@ -58,7 +57,7 @@ export class AuthService {
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
-        this.SendVerificationMail();
+        // this.SendVerificationMail();
         this.SetUserData(result.user);
       })
       .catch((error) => {
@@ -68,13 +67,13 @@ export class AuthService {
 
 
   // Send email verfificaiton when new user sign up
-  SendVerificationMail() {
-    return this.afAuth.currentUser
-      .then((u: any) => u.sendEmailVerification())
-      .then(() => {
-        this.router.navigate(['verify-email-address']);
-      });
-  }
+  // SendVerificationMail() {
+  //   return this.afAuth.currentUser
+  //     .then((u: any) => u.sendEmailVerification())
+  //     .then(() => {
+  //       this.router.navigate(['verify-email-address']);
+  //     });
+  // }
 
 
   // Reset Forggot password
@@ -93,7 +92,9 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null 
+      // && user.emailVerified !== false
+      ) ? true : false;
   }
 
   
@@ -124,9 +125,9 @@ export class AuthService {
     );
     const userData: User = {
       // uid: user.uid,
-      username: user.username,
+      // username: user.username,
       email: user.email,
-      password: user.password,
+      // password: user.password,
     };
     return userRef.set(userData, {
       merge: true,
