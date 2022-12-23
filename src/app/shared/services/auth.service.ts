@@ -69,6 +69,11 @@ export class AuthService {
   }
 
 
+  navigateToRoute(route: string) {
+    this.router.navigate([route]);
+  }
+
+
   saveUser(userId: string, email: string) {
     this.afs.collection('users').doc(userId).set({
       email : email,
