@@ -59,12 +59,22 @@ export class AuthService {
         up and returns promise */
         // this.SendVerificationMail();
         this.SetUserData(result.user);
+        const userId = result.user.uid
+        const email = result.user.email
+        this.saveUser(userId, email);           
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
 
+
+  saveUser(userId: string, email: string) {
+    this.afs.collection('users').doc(userId).set({
+      email : email,
+      userId : userId
+    });
+  }
 
   // Send email verfificaiton when new user sign up
   // SendVerificationMail() {
