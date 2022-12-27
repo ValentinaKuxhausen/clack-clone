@@ -10,9 +10,8 @@ import { User } from 'src/models/user.class';
 export class DashboardProfileComponent {
 
   constructor(private firestore: AngularFirestore) { }
-  
+  initial: string;
   user: User = new User();
-  userName = this.getInitial(this.user.email);
   userId = '';
 
   getUser() {
@@ -27,7 +26,7 @@ export class DashboardProfileComponent {
 
   
 
-  initial: string;
+  
   // Define the function to get the initial from the email address
   getInitial(email: string) {
     console.log(this.user.email)
