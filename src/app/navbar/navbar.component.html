@@ -1,6 +1,5 @@
 <mat-drawer-container class="navbar-container" autosize>
   <ul>
-
     <li>
       <button (click)="newChannel()"><mat-icon>add_box</mat-icon>Add channels</button>
     </li>
@@ -8,17 +7,4 @@
       <button (click)="newMessage()"><mat-icon>add_box</mat-icon>Add teamates</button>
     </li>
   </ul>
-
-<!--  nach mat-tree, wenn Daten vorhanden sind. [dataSource]="dataSource" [treeControl]="treeControl"
-  <mat-tree>
-  
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-    
-      <button mat-icon-button disabled></button>
-      {{node.name}}
-
-    </mat-tree-node>
-  </mat-tree>
- -->
-
 </mat-drawer-container>
