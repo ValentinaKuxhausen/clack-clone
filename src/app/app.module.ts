@@ -34,7 +34,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component'; 
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     NavbarMessagesAddDialogComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardProfileComponent
   ],
   imports: [
     AppRoutingModule,
