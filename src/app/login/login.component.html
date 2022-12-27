@@ -19,11 +19,10 @@
 <div class="login-main">
   <h2><img src="assets/img/slack-icon.png">slack-clone</h2>
   <h1>First, enter your email</h1>
-  <div>We suggest using the <b>email address you use at work.</b></div>
+  <div class="suggestion">We suggest using the <b>email address you use at work.</b></div>
   <div class="displayTable">
     <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Sign In</h3>
+      <div class="authBlock">       
         <div class="formGroup">
           <input type="text" class="formControl" placeholder="Username" #userName required>
         </div>
@@ -43,7 +42,7 @@
         <div class="additionals">
           <div class="formGroup">
             <button type="button" class="btn google-btn" (click)="authService.GoogleAuth()">       
-              Log in with Google
+              <img class="small-img" src="assets/img/google.png"><div>Continue With Google</div>
             </button>
           </div>
           <div class="forgotPassword">
