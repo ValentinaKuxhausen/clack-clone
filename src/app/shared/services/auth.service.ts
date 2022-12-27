@@ -36,19 +36,25 @@ export class AuthService {
   }
 
   // Sign in with email/password
-  SignIn(email: string, password: string) {
-    return this.afAuth
+  async SignIn(email: string, password: string) {
+    return await this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result.user);
-        // this.SetUserData(result.user);
-      
+        const userId = result.user.uid
+        const email = result.user.email
+        console.log(userId);        
+        this.router.navigate([`/dashboard/${userId}`]);        
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
-  
+
+
+
+
+
 
   // Sign up with email/password
   SignUp(email: string, password: string) {
@@ -61,7 +67,7 @@ export class AuthService {
         this.SetUserData(result.user);
         const userId = result.user.uid
         const email = result.user.email
-        this.saveUser(userId, email);           
+        this.saveUser(userId, email);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -76,8 +82,8 @@ export class AuthService {
 
   saveUser(userId: string, email: string) {
     this.afs.collection('users').doc(userId).set({
-      email : email,
-      userId : userId
+      email: email,
+      userId: userId
     });
   }
 
@@ -107,12 +113,12 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null 
+    return (user !== null
       // && user.emailVerified !== false
-      ) ? true : false;
+    ) ? true : false;
   }
 
-  
+
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
