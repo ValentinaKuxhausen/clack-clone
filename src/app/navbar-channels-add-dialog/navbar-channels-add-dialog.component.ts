@@ -16,6 +16,7 @@ import {map, startWith} from 'rxjs/operators';
 export class NavbarChannelsAddDialogComponent {
   loading = false;
   channel: Channel = new Channel();
+  allChannels = [];
   stateCtrl = new FormControl('');
   filteredChannels: Observable<Channel[]>;
   filter: any;

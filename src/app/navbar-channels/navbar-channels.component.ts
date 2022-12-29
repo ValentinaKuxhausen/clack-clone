@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { Channel } from 'src/models/channel.class';
+import { MatDialog } from '@angular/material/dialog';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-navbar-channels',
@@ -8,5 +10,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarChannelsComponent {
 
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog) { }
+
+  channel: Channel = new Channel();
+  allChannels = [];
 
 }

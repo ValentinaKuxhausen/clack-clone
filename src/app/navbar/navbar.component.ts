@@ -26,14 +26,14 @@ export class NavbarComponent {
 
   constructor(private dialog: MatDialog, private firestore: AngularFirestore) { }
 
-/*   ngOnInit() {
+/*    ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
       this.channelId = paramMap.get('id');
       this.getUser();
     })
   }
 
-  getUser() {
+  getChannels() {
     this.firestore
       .collection('channels')
       .doc(this.channelId)
@@ -42,8 +42,8 @@ export class NavbarComponent {
         this.channel = new Channel(channel);
       })
   }
+ 
  */
-
 
   newChannel() {
     this.dialog.open(NavbarChannelsAddDialogComponent, {
