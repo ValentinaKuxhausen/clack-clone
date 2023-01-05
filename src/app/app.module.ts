@@ -35,7 +35,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NavbarMessagesAddDialogComponent } from './navbar-messages-add-dialog/navbar-messages-add-dialog.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component'; 
+import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile
     ForgotPasswordComponent,
     VerifyEmailComponent,
     DashboardComponent,
-    DashboardProfileComponent
+    DashboardProfileComponent,
+    UserMenuComponent,
+    UserDetailComponent,
   ],
   imports: [
     AppRoutingModule,
