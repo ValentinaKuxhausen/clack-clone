@@ -52,4 +52,9 @@ export class DashboardComponent {
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }
+
+  openUserMenu() {
+    
+  }
+
 }

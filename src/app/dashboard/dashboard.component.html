@@ -2,17 +2,20 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <div>
     <form class="example-form">
-      <input type="text" placeholder="Search for a street" [formControl]="control" [matAutocomplete]="auto"
-        class="example-input">
+
+        <input type="text" placeholder="Search for a street" [formControl]="control" [matAutocomplete]="auto"
+          class="example-input">
+        <mat-icon (click)="openUserMenu()" class="user-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="person-circle"></mat-icon>
+
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let street of filteredUsers | async" [value]="user">
           {{user}}
         </mat-option>
       </mat-autocomplete>
     </form>
-
-    <app-dashboard-profile></app-dashboard-profile>
   </div>
+
+  <app-dashboard-profile></app-dashboard-profile>
 </nav>
 <app-navbar></app-navbar>
 <!-- Sidebar navigation -->
