@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'varify-email', component: VerifyEmailComponent },
   { path: 'channels', component: NavbarChannelsComponent },
   { path: 'messages', component: NavbarMessagesComponent },
+  { path: 'user-detail', component: UserDetailComponent },
 ];
 
 @NgModule({
