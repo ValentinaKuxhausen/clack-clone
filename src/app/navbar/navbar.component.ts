@@ -19,9 +19,6 @@ interface ChannelNode {
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent {
-
-  addChannel() { }
-  addMessage() { }
   channelId = '';
 
   constructor(private dialog: MatDialog, private firestore: AngularFirestore) { }

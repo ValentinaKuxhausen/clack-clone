@@ -1,32 +1,28 @@
 export class Channel {
-  slice(): any {
-    throw new Error('Method not implemented.');
-  }
+ 
     id: string;;
     theme: string;
-    description: string;
-    users: string[];
-    creator: string;
+    discription: string;
+    usersData: string[];
+    creatorId: string;
     closedArea: boolean;
 
     constructor(obj?: any) {
-        this.id = obj ? obj.id : '';
         this.theme = obj ? obj.theme : '';
-        this.users = obj ? obj.users : '';
-        this.creator = obj ? obj.creator : '';
-        this.closedArea = obj ? obj.closedArea : false;
-        this.description = obj ? obj.description : '';
-    }
+        this.usersData = obj ? obj.usersData : '';
+        this.creatorId = obj ? obj.creatorId : '';
+        this.closedArea = obj ? obj.closedArea : false;  
+        this.discription = obj ? obj.discription : '';
+      }
 
 
     public toJSON() {
-        return {
-            id : this.id,
+        return {           
             theme: this.theme,
-            users: this.users,
-            creator: this.creator,
+            usersData: this.usersData,
+            creatorId: this.creatorId,
             closedArea : this.closedArea,
-            description : this.description
+            discription : this.discription
         }
     } 
 }
