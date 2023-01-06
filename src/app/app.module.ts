@@ -36,8 +36,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NavbarMessagesAddDialogComponent } from './navbar/navbar-messages-add-dialog/navbar-messages-add-dialog.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
-import { UserMenuComponent } from './user-menu/user-menu.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
 
 @NgModule({
@@ -54,8 +54,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     VerifyEmailComponent,
     DashboardComponent,
     DashboardProfileComponent,
-    UserMenuComponent,
     UserDetailComponent,
+    ProfileDetailComponent,
   ],
   imports: [
     AppRoutingModule,

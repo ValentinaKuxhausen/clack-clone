@@ -6,6 +6,8 @@ import { User } from 'src/models/user.class';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileDetailComponent } from '../profile-detail/profile-detail.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,12 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class DashboardComponent {
 
-  constructor(private route: ActivatedRoute, public authService: AuthService, private firestore: AngularFirestore) { }
+  constructor(
+    private route: ActivatedRoute, 
+    public authService: AuthService,
+    private firestore: AngularFirestore,
+    private dialog: MatDialog)  { }
+
   user: User = new User();
   userName = this.user.email;
   userId = '';
@@ -53,8 +60,10 @@ export class DashboardComponent {
     return value.toLowerCase().replace(/\s/g, '');
   }
 
-  openUserMenu() {
-    
+  openProfile() {
+    const dialog = this.dialog.open(ProfileDetailComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userId = this.userId;
   }
 
 }
