@@ -6,13 +6,13 @@
     </div>
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input [(ngModel)]="channel.theme" matInput placeholder="# e.g. budget-planning">
+      <input [(ngModel)]="channelName" matInput placeholder="# e.g. budget-planning">
       <!--  <mat-hint>Please enter a name.</mat-hint> -->
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Description<span>(optional)</span></mat-label>
-      <input [(ngModel)]="channel.description" matInput>
+      <mat-label>Discription<span>(optional)</span></mat-label>
+      <input [(ngModel)]="channelDiscription" matInput>
       <!-- <mat-hint>Please enter a name.</mat-hint> -->
     </mat-form-field>
     <div class="private">
@@ -20,15 +20,15 @@
         <b>Make private</b>
         When a channel is set to private, it can only be viewed or joined by invitation.
       </div>
-      <mat-slide-toggle></mat-slide-toggle>
-      <button class="create-channel">Create</button>
+      <mat-slide-toggle [(ngModel)]="isChecked">Slide Toggle Checked: {{isChecked}}</mat-slide-toggle>
+      <button class="create-channel" (click)="addNewChannel()">Create</button>
 
     </div>
   </div>
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>State</mat-label>
-      <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+      <mat-label>Channels</mat-label>
+      <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="channelCtrl">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let channel of filteredChannels | async" [value]="channel.theme">
           <span>{{channel.theme}}</span> |

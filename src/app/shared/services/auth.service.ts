@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   userData: any; // Save logged in user data
+  currentUserId: string;
+
 
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
@@ -43,8 +45,8 @@ export class AuthService {
         console.log(result.user);
         const userId = result.user.uid
         const email = result.user.email
-        console.log(userId);        
-        this.router.navigate([`/dashboard/${userId}`]);        
+        this.router.navigate([`/dashboard/${userId}`]);       
+        this.currentUserId = userId;      
       })
       .catch((error) => {
         window.alert(error.message);

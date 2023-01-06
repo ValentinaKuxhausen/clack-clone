@@ -1,14 +1,27 @@
 @import '../../styles.sass'
 .navbar-container
     width: 300px
-    height: 100vh
+    height: calc(100vh - 44px)
     background-color: $darker
+    margin-top: 44px
     li
+        width: 100%
         color: white
         padding-left: 8px
         list-style-type: none
         display: flex
-        align-content: center
+        align-items: center
+        button
+            width: 100%
+            display: flex
+            align-items: center
+            margin-top: 32px
+            padding: 6px
+            &:hover
+                background-color: $hover
+
+mat-icon
+    margin-right: 8px
 
 .white-font
     color: white
@@ -22,8 +35,5 @@ button
     color: white
     cursor: pointer
     mat-icon
-        margin-right: 8px
-        color: gray
-
-
-
+    margin-right: 8px
+    color: gray

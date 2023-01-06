@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Channel } from 'src/models/channel.class';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-navbar-channels-add-dialog',
@@ -16,23 +17,49 @@ import {map, startWith} from 'rxjs/operators';
 export class NavbarChannelsAddDialogComponent {
   loading = false;
   channel: Channel = new Channel();
-  stateCtrl = new FormControl('');
+  allChannels = [];
+  channelCtrl = new FormControl('');
   filteredChannels: Observable<Channel[]>;
   filter: any;
+  channelName: string;  
+  users: any[];
+  newChannel: Channel;
+  channelDiscription: string;
+  usersId: string; 
+  isChecked = true;
+  formGroup = this._formBuilder.group({
+    enableWifi: '',
+    acceptTerms: ['', Validators.requiredTrue],
+  });
 
-  constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>) { 
-    this.filteredChannels = this.stateCtrl.valueChanges.pipe(
-      startWith(''),
-      map(channel => (channel ? this._filterStates(channel) : this.channel.slice())),
-    );
+  constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>, private afAuth: AngularFireAuth, private _formBuilder: FormBuilder) {    
   }
 
-  private _filterStates(value: string): Channel[] {
-    const filterValue = value.toLowerCase();
-    return this.filter(channel => channel.theme.toLowerCase().includes(filterValue));
+
+  addNewChannel() {
+    this.afAuth.authState.subscribe(currentUser => {
+      if (currentUser) {
+        this.firestore.collection('users').get().subscribe(snapshot => {
+          onAuthStateChanged(getAuth(), (authUser) => {
+            this.usersId = authUser.uid;            
+          });
+          this.users = snapshot.docs.map(doc => doc.data());
+          this.newChannel = new Channel({
+            creatorId: currentUser.uid,
+            usersData: this.users,
+            theme: this.channelName,
+            discription: this.channelDiscription,
+            closedArea: this.isChecked
+          });
+          console.log(this.newChannel);
+          this.firestore.collection('channels').add(this.newChannel.toJSON());
+        });
+      }
+    });
   }
 
-  saveChannel() {  
+
+  saveChannel() {
     this.loading = true;
     this.firestore
       .collection('channels')
