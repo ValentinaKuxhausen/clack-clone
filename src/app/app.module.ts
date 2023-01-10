@@ -37,7 +37,7 @@ import { NavbarMessagesAddDialogComponent } from './navbar/navbar-messages-add-d
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
+import { UserEditProfileDialogComponent } from './user-edit-profile-dialog/user-edit-profile-dialog.component';
 
 
 @NgModule({
@@ -55,7 +55,7 @@ import { ProfileDetailComponent } from './profile-detail/profile-detail.componen
     DashboardComponent,
     DashboardProfileComponent,
     UserDetailComponent,
-    ProfileDetailComponent,
+    UserEditProfileDialogComponent,
   ],
   imports: [
     AppRoutingModule,
