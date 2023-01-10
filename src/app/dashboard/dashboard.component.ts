@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { ProfileDetailComponent } from '../profile-detail/profile-detail.component';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -61,7 +61,7 @@ export class DashboardComponent {
   }
 
   openProfile() {
-    const dialog = this.dialog.open(ProfileDetailComponent);
+    const dialog = this.dialog.open(UserDetailComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userId = this.userId;
   }

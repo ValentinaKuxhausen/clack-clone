@@ -3,12 +3,14 @@ export class User {
     email: string;
     channels: string[];
     directMessages: string[];
+    fullName: string[];
 
     constructor(obj?: any) {
         this.uid = obj ? obj.city : '';
         this.email = obj ? obj.email : '';
         this.channels = obj ? obj.channels : '';
         this.directMessages = obj ? obj.directMessages : '';
+        this.fullName = obj ? obj.fullName : '';
     }
 
     public toJSON() {
@@ -16,7 +18,8 @@ export class User {
             uid: this.uid,
             email: this.email,
             channels : this.channels,
-            directMessages: this.directMessages
+            directMessages: this.directMessages,
+            fullName: this.fullName
         };
     }
 }
