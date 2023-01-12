@@ -15,6 +15,8 @@ export class UserEditProfileDialogComponent {
   user: User = new User();
   userId = '';
   dialog: any;
+  firstName: string;
+  lastName: string;
 
   constructor(
     public authService: AuthService,
@@ -30,6 +32,10 @@ export class UserEditProfileDialogComponent {
         .subscribe((user: any) => {
           this.user = new User(user);
         })
+    }
+
+    saveEditedUser(){
+      
     }
   
 }

@@ -1,1 +1,21 @@
-<p>user-edit-profile-dialog works!</p>
+<div class="dialog-container">
+    <div>
+      <h1>Edit User Data</h1>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input [(ngModel)]="firstName" matInput placeholder="enter your first name">
+      </mat-form-field>
+  
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name<span>(optional)</span></mat-label>
+        <input [(ngModel)]="lastName" matInput placeholder="enter your last name">
+      </mat-form-field>
+
+
+      <button class="create-channel" (click)="saveEditedUser()">Save</button>
+
+
+  </div>
