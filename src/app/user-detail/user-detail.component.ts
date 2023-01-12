@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { AuthService } from '../shared/services/auth.service';
 import { UserEditProfileDialogComponent } from '../user-edit-profile-dialog/user-edit-profile-dialog.component';
@@ -17,15 +14,11 @@ export class UserDetailComponent {
 
   user: User = new User();
   userId = '';
-  dialog: any;
 
   constructor(
-    private route: ActivatedRoute, 
     public authService: AuthService,
     private firestore: AngularFirestore,
-    public dialogRef: MatDialogRef<UserEditProfileDialogComponent>, 
-    private afAuth: AngularFireAuth, 
-    private _formBuilder: FormBuilder
+    public dialog: MatDialog 
     )  { }
 
   getUser() {

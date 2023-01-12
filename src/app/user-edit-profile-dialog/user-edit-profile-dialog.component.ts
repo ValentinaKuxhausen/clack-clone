@@ -19,7 +19,6 @@ export class UserEditProfileDialogComponent {
   constructor(
     public authService: AuthService,
     private firestore: AngularFirestore,
-    public dialogRef: MatDialogRef<UserEditProfileDialogComponent>, 
     private _formBuilder: FormBuilder
     )  { }
 
