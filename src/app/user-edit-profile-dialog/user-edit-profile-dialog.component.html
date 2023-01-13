@@ -1,21 +1,24 @@
 <div class="dialog-container">
-    <div>
-      <h1>Edit User Data</h1>
+  <div>
+    <h1>Edit User Data</h1>
 
 
-      <mat-form-field appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input [(ngModel)]="firstName" matInput placeholder="enter your first name">
-      </mat-form-field>
-  
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Last Name<span>(optional)</span></mat-label>
-        <input [(ngModel)]="lastName" matInput placeholder="enter your last name">
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input [(ngModel)]="user.firstName" matInput placeholder="First Name">
+    </mat-form-field>
 
 
-      <button class="create-channel" (click)="saveEditedUser()">Save</button>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Last Name<span>(optional)</span></mat-label>
+      <input [(ngModel)]="user.lastName" matInput placeholder="Last Name">
+    </mat-form-field>
+
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="dialogRef.close()">Cancel</button>
+      <button mat-button (click)="saveEditedUser()">Save</button>
+    </div>
 
 
   </div>

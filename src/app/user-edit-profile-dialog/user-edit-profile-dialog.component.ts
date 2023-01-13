@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { AuthService } from '../shared/services/auth.service';
@@ -21,7 +20,7 @@ export class UserEditProfileDialogComponent {
   constructor(
     public authService: AuthService,
     private firestore: AngularFirestore,
-    private _formBuilder: FormBuilder
+    public dialogRef: MatDialogRef<UserEditProfileDialogComponent>
     )  { }
 
     getUser() {
@@ -35,7 +34,14 @@ export class UserEditProfileDialogComponent {
     }
 
     saveEditedUser(){
-      
+      this.firestore
+      .collection('users')
+      .doc(this.userId)
+      .update(this.user.toJSON())
+      .then((result: any) => {
+        this.dialogRef.close();
+      })
     }
+  
   
 }
