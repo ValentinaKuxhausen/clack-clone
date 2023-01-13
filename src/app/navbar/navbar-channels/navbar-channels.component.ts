@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 interface ChannelsNode {
   name: string;
-  expandable?: boolean;
   children?: ChannelsNode[];
 }
 
@@ -28,11 +27,11 @@ export class NavbarChannelsComponent {
   channelsRef = this.firestore.collection('channels');
   channel: Channel = new Channel();
   allChannels = [];
-  children: ChannelsNode[] = [];
+  children;
   themes;
   level: number;
   expandable: boolean;
-  hasChild = (_: number, node: ChannelsNode) => node.expandable;
+  hasChild = (_: number, node: ExampleFlatNode) => node.level === 1 && node.expandable;
   channelThemes;
 
 
@@ -44,8 +43,7 @@ export class NavbarChannelsComponent {
         const channel = new Channel(doc.data());
         const jsonChannel = channel.toJSON();
         const theme = jsonChannel.theme;
-        this.children.push({ name: `${theme}`});    
-        console.log(this.children)
+        this.children.push({ name: `${theme}`});          
       });
       this.themes = [{ name: 'Channel', children: this.children }];     
       this.dataSource.data = this.themes;
@@ -56,6 +54,8 @@ export class NavbarChannelsComponent {
   constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
   }
 
+
+  openChannel() {}
 
 
   private _transformer = (node: ChannelsNode, level: number) => {
@@ -79,4 +79,8 @@ export class NavbarChannelsComponent {
   );
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+
+
+
 }
