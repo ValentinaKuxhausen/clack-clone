@@ -5,12 +5,13 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatTreeModule} from '@angular/material/tree'; 
 interface ChannelsNode {
   name: string;
-  expandable?: boolean;
   children?: ChannelsNode[];
 }
+
+let themes;
 
 interface ExampleFlatNode {
   expandable: boolean;
@@ -27,36 +28,25 @@ interface ExampleFlatNode {
 export class NavbarChannelsComponent {
   channelsRef = this.firestore.collection('channels');
   channel: Channel = new Channel();
-  allChannels = [];
-  children: ChannelsNode[] = [];
-  themes;
-  level: number;
-  expandable: boolean;
-  hasChild = (_: number, node: ChannelsNode) => node.expandable;
-  channelThemes;
-
-
+  tree: ChannelsNode[] = [];
 
   ngOnInit() {
-
     this.channelsRef.get().subscribe(snapshot => {
       snapshot.forEach(doc => {
         const channel = new Channel(doc.data());
         const jsonChannel = channel.toJSON();
         const theme = jsonChannel.theme;
-        this.children.push({ name: `${theme}`});    
-        console.log(this.children)
+        this.tree.push({ name: `${theme}`});    
+        
       });
-      this.themes = [{ name: 'Channel', children: this.children }];     
-      this.dataSource.data = this.themes;
-      console.log(this.themes)
+      themes = [{ name: 'Channel', children: this.tree }];     
+      this.dataSource.data = themes;   
     });
   }
 
   constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
+    
   }
-
-
 
   private _transformer = (node: ChannelsNode, level: number) => {
     return {
@@ -82,4 +72,6 @@ export class NavbarChannelsComponent {
 
 
   openChannel() {}
+
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 }
