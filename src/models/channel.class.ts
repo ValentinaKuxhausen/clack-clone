@@ -5,13 +5,13 @@ export class Channel {
     discription: string;
     usersData: string[];
     creatorId: string;
-    closedArea: boolean;
+    isClosedArea: boolean;
 
     constructor(obj?: any) {
         this.theme = obj ? obj.theme : '';
         this.usersData = obj ? obj.usersData : '';
         this.creatorId = obj ? obj.creatorId : '';
-        this.closedArea = obj ? obj.closedArea : false;  
+        this.isClosedArea = obj ? obj.isClosedArea : false;  
         this.discription = obj ? obj.discription : '';
       }
 
@@ -21,7 +21,7 @@ export class Channel {
             theme: this.theme,
             usersData: this.usersData,
             creatorId: this.creatorId,
-            closedArea : this.closedArea,
+            isClosedArea : this.isClosedArea,
             discription : this.discription
         }
     } 

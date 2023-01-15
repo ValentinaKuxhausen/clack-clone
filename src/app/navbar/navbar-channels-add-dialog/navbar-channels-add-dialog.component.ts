@@ -26,7 +26,7 @@ export class NavbarChannelsAddDialogComponent {
   newChannel: Channel;
   channelDiscription: string;
   usersId: string; 
-  isChecked = true;
+  isChecked = false;
   formGroup = this._formBuilder.group({
     enableWifi: '',
     acceptTerms: ['', Validators.requiredTrue],
@@ -49,7 +49,7 @@ export class NavbarChannelsAddDialogComponent {
             usersData: this.users,
             theme: this.channelName,
             discription: this.channelDiscription,
-            closedArea: this.isChecked
+            isClosedArea: this.isChecked
           });
           console.log(this.newChannel);
           this.firestore.collection('channels').add(this.newChannel.toJSON());
