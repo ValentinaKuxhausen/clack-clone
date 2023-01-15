@@ -31,13 +31,14 @@ import { NavbarChannelsAddDialogComponent } from './navbar/navbar-channels-add-d
 import { AuthService } from './shared/services/auth.service';
 import { ForgotPasswordComponent } from './login-register/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './login-register/verify-email/verify-email.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NavbarMessagesAddDialogComponent } from './navbar/navbar-messages-add-dialog/navbar-messages-add-dialog.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserEditProfileDialogComponent } from './user-edit-profile-dialog/user-edit-profile-dialog.component';
+import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { UserEditProfileDialogComponent } from './user-edit-profile-dialog/user-
     DashboardProfileComponent,
     UserDetailComponent,
     UserEditProfileDialogComponent,
+    DashboardMainComponent,
   ],
   imports: [
     AppRoutingModule,
