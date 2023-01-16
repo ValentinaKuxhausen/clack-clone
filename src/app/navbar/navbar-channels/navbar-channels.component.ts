@@ -6,6 +6,8 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree'; 
+import { BehaviorSubject } from 'rxjs';
+
 
 interface ChannelsNode {
   name: string;
@@ -30,6 +32,7 @@ export class NavbarChannelsComponent {
   channelsRef = this.firestore.collection('channels');
   channel: Channel = new Channel();
   tree: ChannelsNode[] = [];
+  channelAdded = new BehaviorSubject<ChannelsNode[]>([]);
 
   ngOnInit() {
     this.channelsRef.get().subscribe(snapshot => {
