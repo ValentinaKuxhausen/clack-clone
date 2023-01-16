@@ -36,6 +36,8 @@ export class NavbarChannelsComponent {
       snapshot.forEach(doc => {
         const channel = new Channel(doc.data());
         const jsonChannel = channel.toJSON();
+        this.channel = channel;
+        console.log(this.channel)
         const theme = jsonChannel.theme;
         this.tree.push({ name: `${theme}`});    
         
