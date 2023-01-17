@@ -4,6 +4,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 
 interface ChannelsNode {
   name: string;
+  isClosedArea: boolean;
   children?: ChannelsNode[];
 }
 
@@ -28,6 +29,7 @@ export class ChannelsService {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
+      isClosed: node.isClosedArea,
       level: level,
     };
   };

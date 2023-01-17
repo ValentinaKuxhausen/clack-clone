@@ -2,8 +2,8 @@
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding matTreeNodePaddingIndent="0">
     <!-- use a disabled button to provide padding for tree leaf -->
-    <button mat-icon-button [disabled]="channel.isClosedArea">
-      <mat-icon class="closed-area"> {{ channel.isClosedArea ? 'tag' : 'lock' }}</mat-icon>
+    <button    mat-icon-button>
+      <mat-icon class="closed-area"> {{ node.isClosed ? 'tag' : 'lock' }}</mat-icon>
     </button>
     {{node.name}}
   </mat-tree-node>
