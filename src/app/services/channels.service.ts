@@ -21,6 +21,9 @@ export class ChannelsService {
 
   constructor() { }
 
+
+
+  
   private _transformer = (node: ChannelsNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -41,10 +44,11 @@ export class ChannelsService {
     node => node.children,
   );
 
-  openChannel() {}
-
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   public dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+
+
 
 }

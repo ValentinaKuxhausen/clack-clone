@@ -28,17 +28,16 @@ export class NavbarChannelsComponent {
   channelsRef = this.firestore.collection('channels');
   channel: Channel = new Channel();
   tree: ChannelsNode[] = [];
- 
+  allChannels;
+
+
+  /* Only shows the channels names but not the corresponding data. */
+
   ngOnInit() {
     this.channelsRef.get().subscribe(snapshot => {
       snapshot.forEach(doc => {
         const channel = new Channel(doc.data());
-        const jsonChannel = channel.toJSON();
-        this.channel = channel;
-        console.log(this.channel)
-        const theme = jsonChannel.theme;
-        this.tree.push({ name: `${theme}`});    
-        
+        this.tree.push({ name: `${channel.theme}`});            
       });
       themes = [{ name: 'Channel', children: this.tree }];     
       this.channelService.dataSource.data = themes;   
@@ -48,6 +47,8 @@ export class NavbarChannelsComponent {
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, public channelService: ChannelsService) {
     
   }
+
+  openChannel() {}
 
 
 }
