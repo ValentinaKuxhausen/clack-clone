@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChannelsService } from 'src/app/services/channels.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class NavbarChannelsAddDialogComponent {
     acceptTerms: ['', Validators.requiredTrue],
   });
 
-  constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>, private afAuth: AngularFireAuth, private _formBuilder: FormBuilder) {
+  constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>, private afAuth: AngularFireAuth, private _formBuilder: FormBuilder, private ChannelsService: ChannelsService ) {
   }
 
 

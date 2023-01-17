@@ -33,7 +33,7 @@ import { ForgotPasswordComponent } from './login-register/forgot-password/forgot
 import { VerifyEmailComponent } from './login-register/verify-email/verify-email.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NavbarMessagesAddDialogComponent } from './navbar/navbar-messages-add-dialog/navbar-messages-add-dialog.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserEditProfileDialogComponent } from './user-edit-profile-dialog/user-edit-profile-dialog.component';
 import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
@@ -43,7 +43,7 @@ import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-mai
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
     NavbarComponent,
     NavbarChannelsComponent,
     NavbarMessagesComponent,
@@ -85,7 +85,7 @@ import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-mai
     MatToolbarModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule   
+    ReactiveFormsModule
 
   ],
 

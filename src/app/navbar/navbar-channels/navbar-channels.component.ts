@@ -6,7 +6,7 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree'; 
-import { BehaviorSubject } from 'rxjs';
+import { ChannelsService } from 'src/app/services/channels.service';
 
 
 interface ChannelsNode {
@@ -16,11 +16,7 @@ interface ChannelsNode {
 
 let themes;
 
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-}
+
 
 @Component({
   selector: 'app-navbar-channels',
@@ -32,8 +28,7 @@ export class NavbarChannelsComponent {
   channelsRef = this.firestore.collection('channels');
   channel: Channel = new Channel();
   tree: ChannelsNode[] = [];
-  channelAdded = new BehaviorSubject<ChannelsNode[]>([]);
-
+ 
   ngOnInit() {
     this.channelsRef.get().subscribe(snapshot => {
       snapshot.forEach(doc => {
@@ -46,38 +41,13 @@ export class NavbarChannelsComponent {
         
       });
       themes = [{ name: 'Channel', children: this.tree }];     
-      this.dataSource.data = themes;   
+      this.channelService.dataSource.data = themes;   
     });
   }
 
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog, public channelService: ChannelsService) {
     
   }
 
-  private _transformer = (node: ChannelsNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level: level,
-    };
-  };
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level,
-    node => node.expandable,
-  );
-
-  treeFlattener = new MatTreeFlattener(
-    this._transformer,
-    node => node.level,
-    node => node.expandable,
-    node => node.children,
-  );
-
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
-
-  openChannel() {}
-
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 }
