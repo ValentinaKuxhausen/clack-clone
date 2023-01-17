@@ -61,7 +61,6 @@ export class NavbarChannelsAddDialogComponent {
               .then((result: any) => {
                 console.log('Adding channel finished', result);
               });
-
           });
       }
     });
