@@ -12,7 +12,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class UserEditProfileDialogComponent {
 
   user: User = new User();
-  userId = '';
+  userId: string;
   dialog: any;
   firstName: string;
   lastName: string;

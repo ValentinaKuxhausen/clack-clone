@@ -1,4 +1,5 @@
-export class Nessages {
+export class Message {
+    
     id: string;;
     firstName: string;
     lastName: string[];

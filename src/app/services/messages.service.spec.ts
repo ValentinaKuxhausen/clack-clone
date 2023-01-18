@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DirectMessageService } from './direct-message.service';
+import { MessagesService } from './messages.service';
 
-describe('DirectMessageService', () => {
-  let service: DirectMessageService;
+describe('MessagesService', () => {
+  let service: MessagesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DirectMessageService);
+    service = TestBed.inject(MessagesService);
   });
 
   it('should be created', () => {
