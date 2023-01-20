@@ -5,6 +5,8 @@ export class User {
     directMessages: string[];
     firstName: string[];
     lastName: string[];
+    street: string[];
+    city: string[];
 
     constructor(obj?: any) {
         this.uid = obj ? obj.city : '';
@@ -13,6 +15,8 @@ export class User {
         this.directMessages = obj ? obj.directMessages : '';
         this.firstName = obj ? obj.firstName : '';
         this.lastName = obj ? obj.lastName : '';
+        this.street = obj ? obj.street : '';
+        this.city = obj ? obj.city : '';
     }
 
     public toJSON() {
@@ -23,6 +27,11 @@ export class User {
             directMessages: this.directMessages,
             firstName: this.firstName,
             lastName: this.lastName,
+            street: this.street,
+            city: this.city,
         };
     }
+
+
+
 }

@@ -15,6 +15,18 @@
     </mat-form-field>
 
 
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Street<span>(optional)</span></mat-label>
+      <input [(ngModel)]="user.street" matInput placeholder="Street">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>City<span>(optional)</span></mat-label>
+      <input [(ngModel)]="user.city" matInput placeholder="City">
+    </mat-form-field>
+
+
     <div mat-dialog-actions>
       <button mat-button (click)="dialogRef.close()">Cancel</button>
       <button mat-button (click)="saveEditedUser()">Save</button>
