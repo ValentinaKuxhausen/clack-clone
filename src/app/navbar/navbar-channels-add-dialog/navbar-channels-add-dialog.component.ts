@@ -23,7 +23,7 @@ export class NavbarChannelsAddDialogComponent {
   channelCtrl = new FormControl('');
   filteredChannels: Observable<Channel[]>;
   filter: any;
-  channelName: string;
+  channelNameInput: string;
   users: any[];
   newChannel: Channel;
   channelDiscription: string;
@@ -34,7 +34,11 @@ export class NavbarChannelsAddDialogComponent {
     acceptTerms: ['', Validators.requiredTrue],
   });
 
-  constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>, private afAuth: AngularFireAuth, private _formBuilder: FormBuilder, private ChannelsService: ChannelsService ) {
+  constructor(private firestore: AngularFirestore,
+    public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>,
+    private afAuth: AngularFireAuth,
+    private _formBuilder: FormBuilder,
+    private ChannelService: ChannelsService) {
   }
 
 
@@ -52,7 +56,7 @@ export class NavbarChannelsAddDialogComponent {
             this.newChannel = new Channel({
               creatorId: currentUser.uid,
               usersData: this.users,
-              theme: this.channelName,
+              channelName: this.channelNameInput,
               discription: this.channelDiscription,
               isClosedArea: this.isChecked
             });
@@ -60,11 +64,13 @@ export class NavbarChannelsAddDialogComponent {
               .collection('channels')
               .add(this.newChannel.toJSON())
               .then((result: any) => {
-                console.log('Adding channel finished', result);
+                console.log('Adding channel finished', result);       
+               
               });
           });
       }
-    });
+      this.ChannelService.renderChannel(); 
+    });   
     this.dialogRef.close();
   }
 

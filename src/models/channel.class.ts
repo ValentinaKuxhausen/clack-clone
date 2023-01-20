@@ -1,14 +1,14 @@
 export class Channel {
  
     id: string;;
-    theme: string;
+    channelName: string;
     discription: string;
     usersData: string[];
     creatorId: string;
     isClosedArea: boolean;
 
     constructor(obj?: any) {
-        this.theme = obj ? obj.theme : '';
+        this.channelName = obj ? obj.channelName  : '';
         this.usersData = obj ? obj.usersData : '';
         this.creatorId = obj ? obj.creatorId : '';
         this.isClosedArea = obj ? obj.isClosedArea : false;  
@@ -18,7 +18,7 @@ export class Channel {
 
     public toJSON() {
         return {           
-            theme: this.theme,
+            channelName: this.channelName,
             usersData: this.usersData,
             creatorId: this.creatorId,
             isClosedArea : this.isClosedArea,

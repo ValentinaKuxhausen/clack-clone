@@ -7,7 +7,6 @@ import { MessagesService } from 'src/app/services/messages.service';
 
 interface MessagesNode {
   name: string;
-  isClosedArea: boolean;
   children?: MessagesNode[];
 }
 
@@ -24,23 +23,21 @@ export class NavbarMessagesComponent {
 
   messagesRef = this.firestore.collection('messages');
   message: Message = new Message();
-  // tree: MassagesNode[] = [];
+  tree: MessagesNode[] = [];
   allMessages;
 
-  // ngOnInit() {
-  //   this.messagesRef.get().subscribe(snapshot => {
-  //     snapshot.forEach(doc => {
-  //       const message = new Message(doc.data());
-  //       this.tree.push({ name: `${message.theme}`, isClosedArea: message.isClosedArea });            
-  //     });
-  //     themes = [{ name: 'Message', children: this.tree }];    
-    
-  //     this.messageService.dataSource.data = themes;  
-  //     console.log(themes, this.messageService.dataSource.data); 
-      
-  //   });
-  //   this.getAllMessages(); 
-  // }
+   ngOnInit() {
+     this.messagesRef.get().subscribe(snapshot => {
+       snapshot.forEach(doc => {
+         const message = new Message(doc.data());
+         this.tree.push({ name: `${message.firstName}`});            
+       });
+       themes = [{ name: 'Message', children: this.tree }];    
+       this.messageService.dataSource.data = themes;  
+       console.log(themes, this.messageService.dataSource.data);   
+     });
+     this.getAllMessages(); 
+   }
 
   constructor(private firestore: AngularFirestore, public dialog: MatDialog, public messageService: MessagesService) {
     

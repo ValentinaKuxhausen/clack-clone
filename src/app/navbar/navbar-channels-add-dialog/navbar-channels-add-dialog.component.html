@@ -6,7 +6,7 @@
     </div>
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input [(ngModel)]="channelName" matInput placeholder="# e.g. budget-planning">
+      <input [(ngModel)]="channelNameInput" matInput placeholder="# e.g. budget-planning">
       <!--  <mat-hint>Please enter a name.</mat-hint> -->
     </mat-form-field>
 
@@ -30,8 +30,8 @@
       <mat-label>Channels</mat-label>
       <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="channelCtrl">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let channel of filteredChannels | async" [value]="channel.theme">
-          <span>{{channel.theme}}</span> |
+        <mat-option *ngFor="let channel of filteredChannels | async" [value]="channel.channelName">
+          <span>{{channel.channelName}}</span> |
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
