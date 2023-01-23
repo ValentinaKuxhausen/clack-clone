@@ -3,10 +3,20 @@
     <span>{{user.firstName}}</span>
     <span>{{user.lastName}}</span>
     <span>{{user.email}}</span>
+    <span>{{user.street}}</span>
+    <span>{{user.city}}</span>
 
-    <button mat-menu-item (click)="editProfileDialog()">
+
+    <button [matMenuTriggerFor]="addressDialog">
         <mat-icon>mode_edit</mat-icon>
-        <span>Edit Profile</span>
     </button>
+
+
+    <mat-menu #addressDialog="matMenu">
+        <button mat-menu-item (click)="editProfileDialog()">
+            <mat-icon>mode_edit</mat-icon>
+            <span>Edit Profile</span>
+        </button>
+    </mat-menu>
 
 </div>
