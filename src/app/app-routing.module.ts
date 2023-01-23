@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './login-register/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './login-register/verify-email/verify-email.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'channels', component: NavbarChannelsComponent },
   { path: 'messages', component: NavbarMessagesComponent },
   { path: 'user-detail', component: UserDetailComponent },
+  { path: 'dashboard-main/:id', component: DashboardMainComponent}
 ];
 
 @NgModule({
