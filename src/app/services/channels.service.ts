@@ -8,6 +8,7 @@ let themes;
 
 interface ChannelsNode {
   name: string;
+  channelId: string;
   isClosedArea: boolean;
   children?: ChannelsNode[];
 }
@@ -48,6 +49,7 @@ export class ChannelsService {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
+      channelId : node.channelId,
       isClosed: node.isClosedArea,
       level: level,
     };
@@ -74,7 +76,8 @@ export class ChannelsService {
     this.channelsRef.get().subscribe(snapshot => {
     snapshot.forEach(doc => {
       const channel = new Channel(doc.data()); 
-      this.tree.push({ name: `${channel.channelName}`, isClosedArea: channel.isClosedArea });
+      this.tree.push({ name: `${channel.channelName}`, isClosedArea: channel.isClosedArea, channelId: doc.id });
+      console.log(this.tree)
     });
     themes = [{ name: 'Channel', children: this.tree }];
     this.dataSource.data = themes;

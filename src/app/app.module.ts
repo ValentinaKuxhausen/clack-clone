@@ -38,7 +38,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserEditProfileDialogComponent } from './user-edit-profile-dialog/user-edit-profile-dialog.component';
 import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
+import { DashboardChannelComponent } from './dashboard/dashboard-channel/dashboard-channel.component';
 
 
 @NgModule({
@@ -57,7 +57,7 @@ import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-mai
     DashboardProfileComponent,
     UserDetailComponent,
     UserEditProfileDialogComponent,
-    DashboardMainComponent,
+    DashboardChannelComponent
   ],
   imports: [
     AppRoutingModule,

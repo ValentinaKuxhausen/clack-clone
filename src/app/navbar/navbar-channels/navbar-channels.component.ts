@@ -25,10 +25,13 @@ export class NavbarChannelsComponent {
     this.channelService.renderTree();
   }
 
-
   constructor(public dialog: MatDialog, public channelService: ChannelsService) {
 
   }
-  openChannel() { }
+
+  openChannel() { console.log('is clicked')}
+
+
+
 
 }
