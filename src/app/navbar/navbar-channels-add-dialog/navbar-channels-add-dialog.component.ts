@@ -26,7 +26,7 @@ export class NavbarChannelsAddDialogComponent {
   channelNameInput: string;
   users: any[];
   newChannel: Channel;
-  channelDiscription: string;
+  channelDiscription: string = '';
   usersId: string;
   isChecked = false;
   formGroup = this._formBuilder.group({
@@ -63,11 +63,9 @@ export class NavbarChannelsAddDialogComponent {
             this.firestore
               .collection('channels')
               .add(this.newChannel.toJSON())
-              this.ChannelService.tree = [];
-              this.ChannelService.renderTree();
-              console.log('tree' + this.ChannelService.tree)
+            this.ChannelService.tree = [];
+            this.ChannelService.renderTree();
           });
-     
       }
     });
     this.dialogRef.close();
