@@ -3,10 +3,10 @@ export class User {
     email: string;
     channels: string[];
     directMessages: string[];
-    firstName: string[];
-    lastName: string[];
-    street: string[];
-    city: string[];
+    firstName: string;
+    lastName: string;
+    street: string;
+    city: string;
 
     constructor(obj?: any) {
         this.uid = obj ? obj.city : '';
