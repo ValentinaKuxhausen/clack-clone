@@ -22,7 +22,7 @@ export class NavbarChannelsComponent {
   /* Only shows the channels names but not the corresponding data. */
 
   ngOnInit() {
-    this.channelService.renderChannel();
+    this.channelService.renderTree();
   }
 
 

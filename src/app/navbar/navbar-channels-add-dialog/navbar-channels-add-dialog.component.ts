@@ -63,14 +63,13 @@ export class NavbarChannelsAddDialogComponent {
             this.firestore
               .collection('channels')
               .add(this.newChannel.toJSON())
-              .then((result: any) => {
-                console.log('Adding channel finished', result);       
-               
-              });
+              this.ChannelService.tree = [];
+              this.ChannelService.renderTree();
+              console.log('tree' + this.ChannelService.tree)
           });
+     
       }
-      this.ChannelService.renderChannel(); 
-    });   
+    });
     this.dialogRef.close();
   }
 

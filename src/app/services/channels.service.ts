@@ -24,15 +24,15 @@ interface ExampleFlatNode {
 
 export class ChannelsService {
 
-  channelsRef = this.firestore.collection('channels');
+  channelsRef 
   channel: Channel = new Channel();
   tree: ChannelsNode[] = [];
   allChannels;
+  themes: any;
 
 
   constructor(private firestore: AngularFirestore) { }
 
-  
   getAllChannels() {
     this.firestore
     .collection('channels')
@@ -69,13 +69,15 @@ export class ChannelsService {
 
   public dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  renderChannel() {    this.channelsRef.get().subscribe(snapshot => {
+ renderTree() {  
+  this.channelsRef = this.firestore.collection('channels');
+    this.channelsRef.get().subscribe(snapshot => {
     snapshot.forEach(doc => {
-      const channel = new Channel(doc.data());
+      const channel = new Channel(doc.data()); 
       this.tree.push({ name: `${channel.channelName}`, isClosedArea: channel.isClosedArea });
     });
     themes = [{ name: 'Channel', children: this.tree }];
     this.dataSource.data = themes;
   });
-  this.getAllChannels();}
+}
 }
