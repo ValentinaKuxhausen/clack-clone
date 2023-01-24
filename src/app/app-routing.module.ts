@@ -12,7 +12,10 @@ import { DashboardChannelComponent } from './dashboard/dashboard-channel/dashboa
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'dashboard/:id', component: DashboardComponent },
+  {
+    path: 'dashboard/:id', component: DashboardComponent,
+    children: [{ path: 'dashboard-channel/:channelId', component: DashboardChannelComponent }]
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
@@ -20,7 +23,7 @@ const routes: Routes = [
   { path: 'channels', component: NavbarChannelsComponent },
   { path: 'messages', component: NavbarMessagesComponent },
   { path: 'user-detail', component: UserDetailComponent },
-  { path: 'dashboard/:id/dashboard-channel/:channelId', component: DashboardChannelComponent}
+
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 <mat-tree [dataSource]="channelService.dataSource" [treeControl]="channelService.treeControl">
   <!-- This is the tree node template for leaf nodes -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding matTreeNodePaddingIndent="0" [routerLink]="['/dashboard-channel/' + node.channelId]">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding matTreeNodePaddingIndent="0" [routerLink]="['dashboard-channel/' + node.channelId]">
     <!-- use a disabled button to provide padding for tree leaf -->
     <button mat-icon-button >
       <mat-icon class="closed-area"> {{ node.isClosed ? 'tag' : 'lock' }}</mat-icon>
