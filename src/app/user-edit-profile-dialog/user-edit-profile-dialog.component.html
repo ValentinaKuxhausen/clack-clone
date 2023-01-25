@@ -30,7 +30,7 @@
 
 
     <div mat-dialog-actions>
-      <button mat-button (click)="dialogRef.close()">Cancel</button>
+      <button mat-button [mat-dialog-close]="">Cancel</button>
       <button mat-button [mat-dialog-close]="" (click)="saveEditedUser()" cdkFocusInitial>Save</button>
     </div>
 
