@@ -17,7 +17,7 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./navbar-channels-add-dialog.component.sass']
 })
 
-export class NavbarChannelsAddDialogComponent implements OnInit  {
+export class NavbarChannelsAddDialogComponent implements OnInit {
   channel: Channel = new Channel();
   channelNameInput: string;
   users: any[];
@@ -75,16 +75,14 @@ export class NavbarChannelsAddDialogComponent implements OnInit  {
     this.ChannelService.getAllChannels();
     this.filteredChannels = this.control.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value || '')),     
+      map(value => this._filter(value || '')),
     );
   }
   private _filter(value: string): string[] {
     const filterValue = this._normalizeValue(value);
-    if(this.ChannelService.allChannels) {
-        return this.ChannelService.allChannels.filter(channel => this._normalizeValue(channel.channelName).includes(filterValue)).map(channel => channel.channelName);
-    } else {
-        return [];
-    }
+    if (this.ChannelService.allChannels) return this.ChannelService.allChannels.filter(channel => this._normalizeValue(channel.channelName).includes(filterValue)).map(channel => channel.channelName);
+    else return [];
+
   }
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
