@@ -4,28 +4,32 @@
     <div>Channels are where your team communicates. They’re best when organised around a topic – #marketing, for
       example.
     </div>
-    <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
-      <input [(ngModel)]="channelNameInput" matInput placeholder="# e.g. budget-planning">
-      <!--  <mat-hint>Please enter a name.</mat-hint> -->
-    </mat-form-field>
+    <div class="channel-inputs">
+      <div>Name</div>
+      <mat-form-field appearance="outline">
+        <input [(ngModel)]="channelNameInput" matInput placeholder="# e.g. budget-planning">
+        <!--  <mat-hint>Please enter a name.</mat-hint> -->
+      </mat-form-field>
+      <div>Discription<span>(optional)</span></div>
+      <mat-form-field appearance="outline" class="full-width">
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Discription<span>(optional)</span></mat-label>
-      <input [(ngModel)]="channelDiscription" matInput>
-      <!-- <mat-hint>Please enter a name.</mat-hint> -->
-    </mat-form-field>
+        <input [(ngModel)]="channelDiscription" matInput>
+        <!-- <mat-hint>Please enter a name.</mat-hint> -->
+      </mat-form-field>
+    </div>
     <div class="private">
       <div>
         <b>Make private</b>
         When a channel is set to private, it can only be viewed or joined by invitation.
-      </div>
-      <mat-slide-toggle [(ngModel)]="isChecked">Slide Toggle Checked: {{isChecked}}</mat-slide-toggle>
-      <button class="create-channel" (click)="addNewChannel()">Create</button>
+        Make private
 
+        This can’t be undone. A private channel cannot be made public later on.
+      </div>
+      <mat-slide-toggle [(ngModel)]="isChecked">{{isChecked}}</mat-slide-toggle>
     </div>
   </div>
-<!--   <form class="example-form">
+  <button class="create-channel" (click)="addNewChannel()">Create</button>
+  <!--   <form class="example-form">
     <input type="text"
            placeholder="Channels"
            [formControl]="control"
@@ -37,4 +41,3 @@
       </mat-option>
     </mat-autocomplete>
   </form> -->
-  

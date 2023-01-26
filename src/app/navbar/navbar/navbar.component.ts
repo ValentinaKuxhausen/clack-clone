@@ -7,11 +7,6 @@ import { NavbarMessagesAddDialogComponent } from '../navbar-messages-add-dialog/
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Channel } from 'src/models/channel.class';
 
-interface ChannelNode {
-  expandable: boolean;
-  channel: string;
-  children?: ChannelNode[];
-}
 
 @Component({
   selector: 'app-navbar',
@@ -22,25 +17,6 @@ export class NavbarComponent {
   channelId = '';
 
   constructor(private dialog: MatDialog, private firestore: AngularFirestore) { }
-
-/*    ngOnInit() {
-    this.route.paramMap.subscribe(paramMap => {
-      this.channelId = paramMap.get('id');
-      this.getUser();
-    })
-  }
-
-  getChannels() {
-    this.firestore
-      .collection('channels')
-      .doc(this.channelId)
-      .valueChanges()
-      .subscribe((channel: any) => {
-        this.channel = new Channel(channel);
-      })
-  }
- 
- */
 
   newChannel() {
     this.dialog.open(NavbarChannelsAddDialogComponent, {
