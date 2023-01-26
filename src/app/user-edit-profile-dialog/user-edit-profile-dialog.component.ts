@@ -45,7 +45,8 @@ export class UserEditProfileDialogComponent implements OnInit {
         this.loading = false;
         this.dialogRef.close();
       })
+      console.log(this.userId, this.user)
     }
-    
+ 
   
 }

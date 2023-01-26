@@ -39,8 +39,8 @@ export class ChannelsService {
     .collection('channels')
     .valueChanges()
     .subscribe((changes: any) => {
-      console.log('Received changes', changes);
       this.allChannels = changes;
+      console.log('Received changes', this.allChannels);
     })    
   }
 

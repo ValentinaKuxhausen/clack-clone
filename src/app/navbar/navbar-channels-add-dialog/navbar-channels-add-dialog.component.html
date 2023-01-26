@@ -26,14 +26,15 @@
     </div>
   </div>
   <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Channels</mat-label>
-      <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="channelCtrl">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let channel of filteredChannels | async" [value]="channel.channelName">
-          <span>{{channel.channelName}}</span> |
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+    <input type="text"
+           placeholder="Channels"
+           [formControl]="control"
+           [matAutocomplete]="auto"
+           class="example-input">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let channelOption of filteredChannels | async" [value]="channelOption">
+        {{channelOption}}
+      </mat-option>
+    </mat-autocomplete>
   </form>
-</div>
+  

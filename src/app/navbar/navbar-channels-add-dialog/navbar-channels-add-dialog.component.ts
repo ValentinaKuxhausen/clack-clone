@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Channel } from 'src/models/channel.class';
@@ -8,6 +8,7 @@ import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChannelsService } from 'src/app/services/channels.service';
+import { startWith, map } from 'rxjs/operators';
 
 
 @Component({
@@ -16,23 +17,18 @@ import { ChannelsService } from 'src/app/services/channels.service';
   styleUrls: ['./navbar-channels-add-dialog.component.sass']
 })
 
-export class NavbarChannelsAddDialogComponent {
-  loading = false;
+export class NavbarChannelsAddDialogComponent implements OnInit  {
   channel: Channel = new Channel();
-  allChannels = [];
-  channelCtrl = new FormControl('');
-  filteredChannels: Observable<Channel[]>;
-  filter: any;
   channelNameInput: string;
   users: any[];
   newChannel: Channel;
   channelDiscription: string = '';
   usersId: string;
   isChecked = false;
-  formGroup = this._formBuilder.group({
-    enableWifi: '',
-    acceptTerms: ['', Validators.requiredTrue],
-  });
+  items: Observable<any[]>;
+  dataSource: any;
+
+
 
   constructor(private firestore: AngularFirestore,
     public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>,
@@ -40,6 +36,7 @@ export class NavbarChannelsAddDialogComponent {
     private _formBuilder: FormBuilder,
     private ChannelService: ChannelsService) {
   }
+
 
 
   addNewChannel() {
@@ -71,18 +68,29 @@ export class NavbarChannelsAddDialogComponent {
     this.dialogRef.close();
   }
 
+  control = new FormControl('');
+  filteredChannels: Observable<string[]>;
 
-  /*   saveChannel() {
-      this.loading = true;
-      this.firestore
-        .collection('channels')
-        .add(this.channel.toJSON())
-        .then((result: any) => {
-          console.log('Adding user finished', result);
-        });
-      this.loading = false;
-      this.dialogRef.close();
-    } */
+  ngOnInit() {
+    this.ChannelService.getAllChannels();
+    this.filteredChannels = this.control.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),     
+    );
+  }
+  private _filter(value: string): string[] {
+    const filterValue = this._normalizeValue(value);
+    if(this.ChannelService.allChannels) {
+        return this.ChannelService.allChannels.filter(channel => this._normalizeValue(channel.channelName).includes(filterValue)).map(channel => channel.channelName);
+    } else {
+        return [];
+    }
+  }
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
+
+
 }
 
 
