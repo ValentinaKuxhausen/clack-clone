@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
-import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-user-edit-profile-dialog',
@@ -11,41 +10,55 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class UserEditProfileDialogComponent implements OnInit {
 
-  user!: User;
   loading = false;
+  user!: User;
   userId!: string;
+  firstName: string;
+  lastName: string;
+  street: string;
+  city: string;
 
   constructor(
-    public authService: AuthService,
     private firestore: AngularFirestore,
     public dialogRef: MatDialogRef<UserEditProfileDialogComponent>
-    )  { }
+  ) { }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    // getUser() {
-    //   this.firestore
-    //     .collection('users')
-    //     .doc(this.userId)
-    //     .valueChanges()
-    //     .subscribe((user: any) => {
-    //       this.user = new User(user);
-    //     })
-    // }
+  // getUser() {
+  //   this.firestore
+  //     .collection('users')
+  //     .doc(this.userId)
+  //     .valueChanges()
+  //     .subscribe((user: any) => {
+  //       this.user = new User(user);
+  //     })
+  // }
 
-    saveEditedUser() {
-      this.loading = true;
-  
-      this.firestore
+  saveEditedUser() {
+    this.loading = true;
+
+    this.firestore
       .collection('users')
+
+      // .get()
+      // .subscribe(snapshot => {
+      //   this.user = new User({
+      //     usersData: this.users,
+      //     firstName: this.firstName,
+      //     lastName: this.lastName,
+      //     street: this.street,
+      //     city: this.city,
+      //   });
+      // })
+
       .doc(this.userId)
       .update(this.user.toJSON())
       .then((result: any) => {
         this.loading = false;
         this.dialogRef.close();
       })
-      console.log(this.userId, this.user)
     }
  
   

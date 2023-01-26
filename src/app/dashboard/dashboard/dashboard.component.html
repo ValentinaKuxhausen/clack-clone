@@ -2,8 +2,7 @@
 <nav class="navbar navbar-header fixed-top flex-md-nowrap p-0 shadow">
   <div>
     <form class="header">
-      <input type="text" placeholder="Searchbar" [formControl]="control" [matAutocomplete]="auto"
-        class="example-input">
+      <input type="text" placeholder="Searchbar" [formControl]="control" [matAutocomplete]="auto" class="example-input">
 
 
 
@@ -13,7 +12,11 @@
         <mat-menu #headerMenu="matMenu">
           <button mat-menu-item (click)="openProfile()">
             <mat-icon>mode_edit</mat-icon>
-            <span>Profil</span>
+            <span>Profile</span>
+          </button>
+          <button mat-menu-item (click)="authService.SignOut">
+            <mat-icon>mode_edit</mat-icon>
+            <span>Logout</span>
           </button>
         </mat-menu>
       </button>
@@ -27,54 +30,6 @@
   <app-dashboard-profile></app-dashboard-profile>
 </nav>
 <div class="nav-dash-container">
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
 </div>
-
-
-<!-- Sidebar navigation -->
-
-  <!-- 
-</div>
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              <i class="fas fa-user"></i>User Profile
-            </a>
-          </li>
-       // Calling SignOut() Api from AuthService
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav> 
-
-    <div class="inner-adjust">
-      <div class="pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">User Profile</h1>
-      </div>
-    Show user data when logged in 
-      <div class="row" *ngIf="authService.userData as user">
-        <div class="col-md-12">
-          <div class="media">
-            // <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                  alt="{{user.displayName}}"> 
-            <div class="media-body">
-             <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1> 
-              <p>User ID: <strong>{{user.uid}}</strong></p>
-              <p>Email: <strong>{{user.email}}</strong></p>
-              // <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div>
-  </div>
--->

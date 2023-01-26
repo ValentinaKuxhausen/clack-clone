@@ -32,10 +32,12 @@ export class UserDetailComponent {
   }
 
   editProfileDialog() {
-    this.dialog.open(UserEditProfileDialogComponent, {
+    const dialogRef = this.dialog.open(UserEditProfileDialogComponent, {
       width: '520px',
       hasBackdrop: true
     });
+    dialogRef.componentInstance.user = this.user;
+    dialogRef.componentInstance.userId = this.userId;
   }
 
 
