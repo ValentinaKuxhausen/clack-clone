@@ -20,7 +20,7 @@ export class NavbarComponent {
 
   newChannel() {
     this.dialog.open(NavbarChannelsAddDialogComponent, {
-      width: '520px',
+      width: '520px', 
       hasBackdrop: true
     });
   }
@@ -28,6 +28,7 @@ export class NavbarComponent {
   newMessage() {
     this.dialog.open(NavbarMessagesAddDialogComponent, {
       width: '520px',
+      
       hasBackdrop: true
     });
   }
