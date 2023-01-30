@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChannelsService } from 'src/app/services/channels.service';
 import { startWith, map } from 'rxjs/operators';
-
+import { timePassed } from 'src/app/utils/utils.service';
 
 @Component({
   selector: 'app-navbar-channels-add-dialog',
@@ -27,14 +27,15 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
   isChecked = false;
   items: Observable<any[]>;
   dataSource: any;
-
+  timestamp: any
 
 
   constructor(private firestore: AngularFirestore,
     public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>,
     private afAuth: AngularFireAuth,
     private _formBuilder: FormBuilder,
-    private ChannelService: ChannelsService) {
+    private ChannelService: ChannelsService,
+  ) {
   }
 
 
@@ -49,13 +50,17 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
             onAuthStateChanged(getAuth(), (authUser) => {
               this.usersId = authUser.uid;
             });
+            let currentDate = new Date().getSeconds();
+            this.timestamp = timePassed(currentDate);
+            console.log(this.timestamp);
             this.users = snapshot.docs.map(doc => doc.data());
             this.newChannel = new Channel({
               creatorId: currentUser.uid,
               usersData: this.users,
               channelName: this.channelNameInput,
               discription: this.channelDiscription,
-              isClosedArea: this.isChecked
+              isClosedArea: this.isChecked,
+              creationTime: this.timestamp
             });
             this.firestore
               .collection('channels')

@@ -4,7 +4,7 @@
     [routerLink]="['dashboard-channel/' + node.channelId]">
     <!-- use a disabled button to provide padding for tree leaf -->
     <button mat-icon-button>
-      <mat-icon class="closed-area"> {{ node.isClosed ? 'tag' : 'lock' }}</mat-icon>
+      <mat-icon class="closed-area"> {{ node.isClosed ? 'lock' : 'tag'}}</mat-icon>
     </button>
     {{node.name}}
   </mat-tree-node>

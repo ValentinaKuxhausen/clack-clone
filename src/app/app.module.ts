@@ -39,6 +39,8 @@ import { UserEditProfileDialogComponent } from './user-edit-profile-dialog/user-
 import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DashboardChannelComponent } from './dashboard/dashboard-channel/dashboard-channel.component';
+import { DashboardEditChannelComponent } from './dashboard/dashboard-edit-channel/dashboard-edit-channel.component';
+import { DashboardAddMessageComponent } from './dashboard/dashboard-add-message/dashboard-add-message.component';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import { DashboardChannelComponent } from './dashboard/dashboard-channel/dashboa
     DashboardProfileComponent,
     UserDetailComponent,
     UserEditProfileDialogComponent,
-    DashboardChannelComponent
+    DashboardChannelComponent,
+    DashboardEditChannelComponent,
+    DashboardAddMessageComponent
   ],
   imports: [
     AppRoutingModule,

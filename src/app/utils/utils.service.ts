@@ -14,6 +14,8 @@ export function isJson(str: string) {
 export async function fetchJson(url: string) {
   return await (await fetch(url)).json();
 }
+
+
 export function timePassed(seconds) {
   let MINUTE = 60;
   let HOUR = MINUTE * 60;
