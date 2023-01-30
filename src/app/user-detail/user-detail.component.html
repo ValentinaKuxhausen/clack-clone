@@ -1,23 +1,23 @@
 <div>
 
-    <span>{{user.firstName}}</span>
-    <span>{{user.lastName}}</span>
-    <span>{{user.email}}</span>
-    <span>{{user.street}}</span>
-    <span>{{user.city}}</span>
-    <span>{{user.userId}}</span>
-
+    <div class="column">
+        <span>{{user.firstName}}</span>
+        <span>{{user.lastName}}</span>
+        <span>{{user.email}}</span>
+        <span>{{user.street}}</span>
+        <span>{{user.city}}</span>
+        <span>{{user.userId}}</span>
+    </div>
 
     <button [matMenuTriggerFor]="addressDialog">
-        <mat-icon>mode_edit</mat-icon>
+        <mat-menu #addressDialog="matMenu">
+            <button mat-menu-item (click)="editProfileDialog()">
+                <mat-icon>mode_edit</mat-icon>
+                <span>Edit Profile</span>
+            </button>
+        </mat-menu>
+
     </button>
 
-
-    <mat-menu #addressDialog="matMenu">
-        <button mat-menu-item (click)="editProfileDialog()">
-            <mat-icon>mode_edit</mat-icon>
-            <span>Edit Profile</span>
-        </button>
-    </mat-menu>
 
 </div>
