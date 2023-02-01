@@ -56,7 +56,7 @@ export class AuthService {
 
 
   // Sign up/ login with email/password
-  SignUp(email: string, password: string) {
+  SignUp(_username: string, email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
@@ -111,7 +111,7 @@ export class AuthService {
 
   // Sign in/ login with Google
   GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+    return this.AuthLogin(new auth.GoogleAuthProvider()).then((_res: any) => {
       this.router.navigate(['dashboard']);
     });
   }
@@ -139,10 +139,10 @@ export class AuthService {
       `users/${user.uid}`
     );
     const userData: User = {
-      // uid: user.uid,
-      // username: user.username,
+      uid: user.uid,
+      username: user.username,
       email: user.email,
-      // password: user.password,
+      password: user.password,
     };
     return userRef.set(userData, {
       merge: true,
