@@ -1,11 +1,51 @@
 @import '../../../styles.sass'
 
 .main-dashbaord
-    position: block   
+    position: block
     margin-top: 44px
     height: calc(100vh - 44px)
     background-color: $dark
     width: calc(100vw - 300px)
     color: white
 
+mat-card
+    background-color: $dark
+    border: $border
 
+.mdc-card
+    justify-content: center !important
+
+.channel
+    background-color: $dark
+    color: $text
+    border: none
+    border-radius: 0px
+    width: 100%
+    display: flex
+    align-items: center
+    mat-icon
+    font-size: 14px
+    height: 30%
+    .channel-btn
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        flex-direction: row
+        height: 100%
+
+mat-card
+        height: 49px
+
+mat-card-title
+
+        height: 100%
+
+button
+    width: 130px
+    height: 30px
+    background-color: $dark
+    border: none
+    color: $text
+    padding: 12px
+    &:hover
+        background-color: $hover

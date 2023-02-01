@@ -7,6 +7,7 @@ export class Channel {
     creatorId: string;
     isClosedArea: boolean;
     creationTime: any;
+    numberOfMembers: number;
     messages: [{
         userId: string;
         timestamp: number;
@@ -20,6 +21,7 @@ export class Channel {
         this.isClosedArea = obj ? obj.isClosedArea : false;
         this.discription = obj ? obj.discription : '';
         this.creationTime = obj ? obj.creationTime : '';
+        this.numberOfMembers = obj ? obj.numberOfMembers : '';
     }
 
 
@@ -30,7 +32,8 @@ export class Channel {
             creatorId: this.creatorId,
             isClosedArea: this.isClosedArea,
             discription: this.discription,
-            creationTime: this.creationTime
+            creationTime: this.creationTime,
+            numberOfMembers : this.numberOfMembers
         }
     }
 }
