@@ -15,9 +15,15 @@ h1
 div, h1, input, mat-label
     color: white
 
-input
-    &:focus
-        border: 1px solid blue
+.costom-input
+    &::-webkit-input-placeholder
+        color: #fff !important
+    &::-moz-placeholder
+        color: #fff !important
+    &::-ms-input-placeholder
+        color: #fff !important
+    &::placeholder
+        color: #fff !important
 
 .channel-inputs
     display: flex
