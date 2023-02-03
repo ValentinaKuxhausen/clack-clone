@@ -56,7 +56,7 @@ export class AuthService {
 
 
   // Sign up/ login with email/password
-  SignUp(_username: string, email: string, password: string) {
+  SignUp(username: string, email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
@@ -66,7 +66,9 @@ export class AuthService {
         this.SetUserData(result.user);
         const userId = result.user.uid
         const email = result.user.email
-        this.saveUser(userId, email);
+        let username = result.user.username
+        if(username !== "") username = email
+        this.saveUser(username, userId, email);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -79,8 +81,9 @@ export class AuthService {
   }
 
 
-  saveUser(userId: string, email: string) {
+  saveUser(username: string, userId: string, email: string) {
     this.afs.collection('users').doc(userId).set({
+      username: username,
       email: email,
       userId: userId
     });

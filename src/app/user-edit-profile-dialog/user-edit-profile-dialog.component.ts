@@ -13,10 +13,6 @@ export class UserEditProfileDialogComponent implements OnInit {
   loading = false;
   user!: User;
   userId!: string;
-  firstName: string;
-  lastName: string;
-  street: string;
-  city: string;
 
   constructor(
     private firestore: AngularFirestore,
@@ -38,21 +34,8 @@ export class UserEditProfileDialogComponent implements OnInit {
 
   saveEditedUser() {
     this.loading = true;
-
     this.firestore
       .collection('users')
-
-      // .get()
-      // .subscribe(snapshot => {
-      //   this.user = new User({
-      //     usersData: this.users,
-      //     firstName: this.firstName,
-      //     lastName: this.lastName,
-      //     street: this.street,
-      //     city: this.city,
-      //   });
-      // })
-
       .doc(this.userId)
       .update(this.user.toJSON())
       .then((result: any) => {

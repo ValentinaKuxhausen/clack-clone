@@ -6,26 +6,10 @@
     <form>
       <mat-form-field appearance="outline">
         <mat-label>First Name</mat-label>
-        <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="First Name">
+        <input [disabled]="loading" [(ngModel)]="user.username" matInput placeholder="User Name">
       </mat-form-field>
 
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Last Name</mat-label>
-        <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Last Name">
-      </mat-form-field>
-
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Street</mat-label>
-        <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Street">
-      </mat-form-field>
-
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>City</mat-label>
-        <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="City">
-      </mat-form-field>
     </form>
 
 

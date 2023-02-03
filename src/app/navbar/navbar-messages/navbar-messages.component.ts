@@ -30,7 +30,7 @@ export class NavbarMessagesComponent {
      this.messagesRef.get().subscribe(snapshot => {
        snapshot.forEach(doc => {
          const message = new Message(doc.data());
-         this.tree.push({ name: `${message.firstName}`});            
+        //  this.tree.push({ name: `${message.firstName}`});            
        });
        themes = [{ name: 'Message', children: this.tree }];    
        this.messageService.dataSource.data = themes;  
