@@ -22,16 +22,6 @@ export class UserEditProfileDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // getUser() {
-  //   this.firestore
-  //     .collection('users')
-  //     .doc(this.userId)
-  //     .valueChanges()
-  //     .subscribe((user: any) => {
-  //       this.user = new User(user);
-  //     })
-  // }
-
   saveEditedUser() {
     this.loading = true;
     this.firestore
