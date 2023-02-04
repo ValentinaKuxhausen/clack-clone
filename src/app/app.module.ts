@@ -41,6 +41,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DashboardChannelComponent } from './dashboard/dashboard-channel/dashboard-channel.component';
 import { DashboardEditChannelComponent } from './dashboard/dashboard-edit-channel/dashboard-edit-channel.component';
 import { DashboardAddMessageComponent } from './dashboard/dashboard-add-message/dashboard-add-message.component';
+import { DashboardChannelAddMessageComponent } from './dashboard/dashboard-channel-add-message/dashboard-channel-add-message.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { DashboardAddMessageComponent } from './dashboard/dashboard-add-message/
     UserEditProfileDialogComponent,
     DashboardChannelComponent,
     DashboardEditChannelComponent,
-    DashboardAddMessageComponent
+    DashboardAddMessageComponent,
+    DashboardChannelAddMessageComponent
   ],
   imports: [
     AppRoutingModule,

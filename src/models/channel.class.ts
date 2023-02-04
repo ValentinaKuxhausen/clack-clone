@@ -8,11 +8,7 @@ export class Channel {
     isClosedArea: boolean;
     creationTime: any;
     numberOfMembers: number;
-    messages: [{
-        userId: string;
-        timestamp: number;
-        message: string;
-    }];
+ 
 
     constructor(obj?: any) {
         this.channelName = obj ? obj.channelName : '';

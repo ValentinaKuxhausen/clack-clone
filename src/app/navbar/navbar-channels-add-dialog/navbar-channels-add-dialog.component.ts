@@ -24,11 +24,11 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
   newChannel: Channel;
   channelDiscription: string = '';
   usersId: string;
-  isChecked = false;
+  isClosedArea = false;
   items: Observable<any[]>;
   dataSource: any;
   timestamp: any
-
+  currentUser: any;
 
   constructor(private firestore: AngularFirestore,
     public dialogRef: MatDialogRef<NavbarChannelsAddDialogComponent>,
@@ -49,19 +49,23 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
           .subscribe(snapshot => {
             onAuthStateChanged(getAuth(), (authUser) => {
               this.usersId = authUser.uid;
+              this.currentUser = authUser
             });
             let currentDate = new Date().getSeconds();
             this.timestamp = timePassed(currentDate);
             console.log(this.timestamp);
-            this.users = snapshot.docs.map(doc => doc.data());
+            if (this.isClosedArea)  this.users = this.currentUser;
+            else this.users = snapshot.docs.map(doc => doc.data());            
             this.newChannel = new Channel({
               creatorId: currentUser.uid,
               usersData: this.users,
               channelName: this.channelNameInput,
               discription: this.channelDiscription,
-              isClosedArea: this.isChecked,
-              creationTime: this.timestamp
+              isClosedArea: this.isClosedArea,
+              creationTime: this.timestamp,
+              numberOfMembers: this.users.length              
             });
+            console.log(this.newChannel)
             this.firestore
               .collection('channels')
               .add(this.newChannel.toJSON())

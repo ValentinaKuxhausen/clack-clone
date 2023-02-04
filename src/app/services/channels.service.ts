@@ -25,7 +25,7 @@ interface ExampleFlatNode {
 
 export class ChannelsService {
 
-  channelsRef 
+  channelsRef
   channel: Channel = new Channel();
   tree: ChannelsNode[] = [];
   allChannels;
@@ -36,12 +36,11 @@ export class ChannelsService {
 
   getAllChannels() {
     this.firestore
-    .collection('channels')
-    .valueChanges()
-    .subscribe((changes: any) => {
-      this.allChannels = changes;
-      console.log('Received changes', this.allChannels);
-    })    
+      .collection('channels')
+      .valueChanges()
+      .subscribe((changes: any) => {
+        this.allChannels = changes;
+      })
   }
 
 
@@ -49,7 +48,7 @@ export class ChannelsService {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
-      channelId : node.channelId,
+      channelId: node.channelId,
       isClosed: node.isClosedArea,
       level: level,
     };
@@ -71,16 +70,15 @@ export class ChannelsService {
 
   public dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
- renderTree() {  
-  this.channelsRef = this.firestore.collection('channels');
+  renderTree() {
+    this.channelsRef = this.firestore.collection('channels');
     this.channelsRef.get().subscribe(snapshot => {
-    snapshot.forEach(doc => {
-      const channel = new Channel(doc.data()); 
-      this.tree.push({ name: `${channel.channelName}`, isClosedArea: channel.isClosedArea, channelId: doc.id });
-      console.log(this.tree)
+      snapshot.forEach(doc => {
+        const channel = new Channel(doc.data());
+        this.tree.push({ name: `${channel.channelName}`, isClosedArea: channel.isClosedArea, channelId: doc.id });
+      });
+      themes = [{ name: 'Channel', children: this.tree }];
+      this.dataSource.data = themes;
     });
-    themes = [{ name: 'Channel', children: this.tree }];
-    this.dataSource.data = themes;
-  });
-}
+  }
 }
