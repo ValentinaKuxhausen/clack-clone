@@ -40,7 +40,5 @@ export class DashboardChannelComponent implements OnInit {
         console.log(this.channel)
       })
   }
-
-
 }
 

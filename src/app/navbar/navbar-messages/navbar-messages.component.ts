@@ -26,32 +26,33 @@ export class NavbarMessagesComponent {
   tree: MessagesNode[] = [];
   allMessages;
 
-   ngOnInit() {
-     this.messagesRef.get().subscribe(snapshot => {
-       snapshot.forEach(doc => {
-         const message = new Message(doc.data());
+  ngOnInit() {
+    this.messagesRef.get().subscribe(snapshot => {
+      snapshot.forEach(doc => {
+        const message = new Message(doc.data());
         //  this.tree.push({ name: `${message.firstName}`});            
-       });
-       themes = [{ name: 'Message', children: this.tree }];    
-       this.messageService.dataSource.data = themes;  
-       console.log(themes, this.messageService.dataSource.data);   
-     });
-     this.getAllMessages(); 
-   }
-
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog, public messageService: MessagesService) {
-    
+      });
+      themes = [{ name: 'Message', children: this.tree }];
+      this.messageService.dataSource.data = themes;
+      console.log(themes, this.messageService.dataSource.data);
+    });
+    this.getAllMessages();
   }
 
-  getAllMessages() {this.firestore
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog, public messageService: MessagesService) {
+
+  }
+
+  getAllMessages() {
+    this.firestore
     .collection('messages')
     .valueChanges()
     .subscribe((changes: any) => {
-      console.log('Received changes', changes);
-      this.allMessages = changes;      
-    })}
+      this.allMessages = changes;
+    })
+  }
 
-  openMessage() {}
+  openMessage() { }
 
 
 }
