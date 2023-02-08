@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChannelsService } from 'src/app/services/channels.service';
 import { startWith, map } from 'rxjs/operators';
 import { timePassed } from 'src/app/utils/utils.service';
+import { getDateTime } from 'src/app/utils/utils.service';
+
 
 @Component({
   selector: 'app-navbar-channels-add-dialog',
@@ -24,6 +26,7 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
   newChannel: Channel;
   channelDiscription: string = '';
   usersId: string;
+  usersEmail: string;
   isClosedArea = false;
   items: Observable<any[]>;
   dataSource: any;
@@ -49,53 +52,52 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
           .subscribe(snapshot => {
             onAuthStateChanged(getAuth(), (authUser) => {
               this.usersId = authUser.uid;
-              this.currentUser = authUser
-            });
-            let currentDate = new Date().getSeconds();
-            this.timestamp = timePassed(currentDate);
-            console.log(this.timestamp);
-            if (this.isClosedArea)  this.users = this.currentUser;
-            else this.users = snapshot.docs.map(doc => doc.data());            
-            this.newChannel = new Channel({
-              creatorId: currentUser.uid,
-              usersData: this.users,
-              channelName: this.channelNameInput,
-              discription: this.channelDiscription,
-              isClosedArea: this.isClosedArea,
-              creationTime: this.timestamp,
-              numberOfMembers: this.users.length              
-            });
-            console.log(this.newChannel)
-            this.firestore
-              .collection('channels')
-              .add(this.newChannel.toJSON())
-            this.ChannelService.tree = [];
-            this.ChannelService.renderTree();
-          });
-      }
-    });
-    this.dialogRef.close();
+              this.usersEmail = authUser.email;
+            }
+            );
+        this.timestamp = getDateTime()
+        console.log(this.timestamp);
+        if (!this.isClosedArea) this.users = snapshot.docs.map(doc => doc.data());
+        this.newChannel = new Channel({
+          creatorId: currentUser.uid,
+          usersData: this.users,
+          channelName: this.channelNameInput,
+          discription: this.channelDiscription,
+          isClosedArea: this.isClosedArea,
+          creationTime: this.timestamp,
+          numberOfMembers: this.users.length
+        });
+        console.log(this.newChannel)
+        this.firestore
+          .collection('channels')
+          .add(this.newChannel.toJSON())
+        this.ChannelService.tree = [];
+        this.ChannelService.renderTree();
+      });
+  }
+});
+this.dialogRef.close();
   }
 
-  control = new FormControl('');
-  filteredChannels: Observable<string[]>;
+control = new FormControl('');
+filteredChannels: Observable<string[]>;
 
-  ngOnInit() {
-    this.ChannelService.getAllChannels();
-    this.filteredChannels = this.control.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-  }
+ngOnInit() {
+  this.ChannelService.getAllChannels();
+  this.filteredChannels = this.control.valueChanges.pipe(
+    startWith(''),
+    map(value => this._filter(value || '')),
+  );
+}
   private _filter(value: string): string[] {
-    const filterValue = this._normalizeValue(value);
-    if (this.ChannelService.allChannels) return this.ChannelService.allChannels.filter(channel => this._normalizeValue(channel.channelName).includes(filterValue)).map(channel => channel.channelName);
-    else return [];
+  const filterValue = this._normalizeValue(value);
+  if (this.ChannelService.allChannels) return this.ChannelService.allChannels.filter(channel => this._normalizeValue(channel.channelName).includes(filterValue)).map(channel => channel.channelName);
+  else return [];
 
-  }
+}
   private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
+  return value.toLowerCase().replace(/\s/g, '');
+}
 
 
 }

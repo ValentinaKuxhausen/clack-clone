@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
-
-
 export function isJson(str: string) {
   try {
     JSON.parse(str);
@@ -34,4 +31,8 @@ export function timePassed(seconds) {
   else return `${seconds} Sekunden`;
 }
 
-
+export function getDateTime()
+{
+  let dateTime = new Date();
+  return dateTime
+}
