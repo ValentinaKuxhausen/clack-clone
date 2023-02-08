@@ -17,7 +17,7 @@ export class User {
 
     public toJSON() {
         return {      
-            uid: this.uid,
+            // uid: this.uid,
             email: this.email,
             channels : this.channels,
             directMessages: this.directMessages,
