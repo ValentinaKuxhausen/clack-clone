@@ -13,6 +13,7 @@ export class UserEditProfileDialogComponent implements OnInit {
   loading = false;
   user!: User;
   userId!: string;
+  username: string;
 
   constructor(
     private firestore: AngularFirestore,
