@@ -13,7 +13,6 @@ export class UserEditProfileDialogComponent implements OnInit {
   loading = false;
   user!: User;
   userId!: string;
-  username: string;
 
   constructor(
     private firestore: AngularFirestore,
@@ -31,6 +30,7 @@ export class UserEditProfileDialogComponent implements OnInit {
       .update(this.user.toJSON())
       .then((result: any) => {
         this.loading = false;
+        console.log(this.user);
         this.dialogRef.close();
       })
     }
