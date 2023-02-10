@@ -1,17 +1,18 @@
 <div class="main-dashbaord">
     <mat-card>
-        <div class="channel"> 
+        <div class="channel">
             <mat-card-title>
                 <button class="channel-btn">
-                    <mat-icon [ngStyle]="{'font-style': channel.isClosedArea ? 'normal' : 'italic' }">{{ channel.isClosedArea ? 'lock' : 'tag'  }}</mat-icon>
+                    <mat-icon [ngStyle]="{'font-style': channel.isClosedArea ? 'normal' : 'italic' }">{{
+                        channel.isClosedArea ? 'lock' : 'tag' }}</mat-icon>
                     <div>{{channel.channelName}}</div>
                     <mat-icon>expand_more</mat-icon>
                 </button>
             </mat-card-title>
         </div>
     </mat-card>
-    <app-dashboard-channel-add-message>
-
-
-    </app-dashboard-channel-add-message>
+    <div class="add-message-dialog">
+        <app-dashboard-channel-add-message>
+        </app-dashboard-channel-add-message>
+    </div>
 </div>

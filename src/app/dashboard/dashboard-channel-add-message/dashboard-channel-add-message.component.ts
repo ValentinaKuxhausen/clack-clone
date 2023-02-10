@@ -14,7 +14,7 @@ import { Channel } from 'src/models/channel.class';
 export class DashboardChannelAddMessageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, public channelService: ChannelsService, private firestore: AngularFirestore) { }
-
+  textareaFocused = false;
   channelId = '';
   channel: Channel = new Channel();
 
