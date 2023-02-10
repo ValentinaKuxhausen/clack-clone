@@ -4,7 +4,7 @@ export class User {
     channels: string[];
     directMessages: string[];
     userId: string;
-    username: string;
+    displayName: string;
 
     constructor(obj?: any) {
         this.uid = obj ? obj.city : '';
@@ -12,7 +12,7 @@ export class User {
         this.channels = obj ? obj.channels : '';
         this.directMessages = obj ? obj.directMessages : '';
         this.userId = obj ? obj.userId : '';
-        this.username = obj ? obj.username : '';
+        this.displayName = obj ? obj.displayName : '';
     }
 
     public toJSON() {
@@ -22,7 +22,7 @@ export class User {
             channels : this.channels,
             directMessages: this.directMessages,
             userId: this.userId,
-            username: this.username,
+            displayName: this.displayName,
         };
     }
 

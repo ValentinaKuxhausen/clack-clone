@@ -14,7 +14,7 @@ import { Channel } from 'src/models/channel.class';
 })
 export class DashboardChannelComponent implements OnInit {
 
-  
+
 
   constructor(private route: ActivatedRoute, public channelService: ChannelsService, private firestore: AngularFirestore) { }
 
@@ -26,7 +26,7 @@ export class DashboardChannelComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.channelId = paramMap.get('channelId');
       this.getChannel();
-     
+
     })
   }
 
@@ -37,7 +37,6 @@ export class DashboardChannelComponent implements OnInit {
       .valueChanges()
       .subscribe((channel: any) => {
         this.channel = new Channel(channel);
-        console.log(this.channel)
       })
   }
 }

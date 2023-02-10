@@ -53,8 +53,7 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
             onAuthStateChanged(getAuth(), (authUser) => {
               this.usersId = authUser.uid;
               this.usersEmail = authUser.email;
-            }
-            );
+            });
         this.timestamp = getDateTime()
         console.log(this.timestamp);
         if (!this.isClosedArea) this.users = snapshot.docs.map(doc => doc.data());

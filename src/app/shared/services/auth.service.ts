@@ -56,9 +56,9 @@ export class AuthService {
 
 
   // Sign up/ login with email/password
-  SignUp(username: string, email: string, password: string) {
+  SignUp(displayName: string, email: string, password: string) {
     return this.afAuth
-      .createUserWithEmailAndPassword(email, password, username) // 3. Parameter username vorerst gelöscht, da cannot get
+      .createUserWithEmailAndPassword(displayName, email, password) // 3. Parameter username vorerst gelöscht, da cannot get
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
@@ -66,9 +66,9 @@ export class AuthService {
         this.SetUserData(result.user);
         const userId = result.user.uid
         const email = result.user.email
-        let username = result.user.username
-        if(username !== "") username = email
-        this.saveUser(username, userId, email);
+        const displayName = result.user.displayName
+      /*   if (displayName !== "") displayName = email */
+        this.saveUser(displayName, userId, email);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -163,5 +163,5 @@ export class AuthService {
 
 
 
-  
+
 }
