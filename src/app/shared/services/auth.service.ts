@@ -56,9 +56,9 @@ export class AuthService {
 
 
   // Sign up/ login with email/password
-  SignUp(displayName: string, email: string, password: string) {
+  SignUp(email: string, password: string) {
     return this.afAuth
-      .createUserWithEmailAndPassword(displayName, email, password) // 3. Parameter username vorerst gelöscht, da cannot get
+      .createUserWithEmailAndPassword(email, password) // 3. Parameter username vorerst gelöscht, da cannot get
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */

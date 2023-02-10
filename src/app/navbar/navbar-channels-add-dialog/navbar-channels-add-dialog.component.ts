@@ -42,7 +42,7 @@ export class NavbarChannelsAddDialogComponent implements OnInit {
   }
 
 
-
+// diese Funktion verwenden für saveEditedUser()
   addNewChannel() {
     this.afAuth.authState.subscribe(currentUser => {
       if (currentUser) {

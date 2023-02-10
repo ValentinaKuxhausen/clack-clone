@@ -1,9 +1,9 @@
 <div>
     <div class="column">
 
-        <span>{{user.email}}</span>
-        <span>{{user.userId}}</span>
-        <span>{{user.displayName}}</span>
+        <span>{{ user['email'] }}</span>
+        <span>{{ user['userId'] }}</span>
+        <span>{{ user['username'] }}</span>
         <button mat-menu-item (click)="editProfileDialog()">
             <mat-icon>mode_edit</mat-icon>
             <span>Edit Profile</span>
