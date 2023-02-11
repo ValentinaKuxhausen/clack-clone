@@ -28,7 +28,6 @@ export class DashboardChannelComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.channelId = paramMap.get('channelId');
       this.getChannel();
-
     })
   }
 

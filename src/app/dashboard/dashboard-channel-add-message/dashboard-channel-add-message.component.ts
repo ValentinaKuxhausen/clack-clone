@@ -19,18 +19,19 @@ export class DashboardChannelAddMessageComponent implements OnInit {
 
   constructor(private datePipe: DatePipe, private route: ActivatedRoute, public channelService: ChannelsService, private firestore: AngularFirestore, private afAuth: AngularFireAuth,) { }
   textareaFocused = false;
-  channelId = '';
-  channel: Channel = new Channel();
   placeholderText: string;
   newMessage: Message = new Message();
   messageTextInput: string;
   myDate: any = new Date();
+  channelId = '';
+  channel: Channel = new Channel();
 
 
-
-  ngOnInit() {
-
-
+  ngOnInit() {    
+    this.route.paramMap.subscribe(paramMap => {
+      this.channelId = paramMap.get('channelId');
+      this.getChannel();
+    })
   }
 
   getChannel() {
@@ -44,7 +45,7 @@ export class DashboardChannelAddMessageComponent implements OnInit {
   }
 
 
-  addMessage() {
+   addMessage() {
     this.getCurrentUser().subscribe(userData => {
       let id = userData[0];
       let userName = userData[1];
@@ -74,13 +75,13 @@ export class DashboardChannelAddMessageComponent implements OnInit {
               map(snapshot => {
                 // Get all the users data from Firestore
                 const users: any = snapshot.docs.map(doc => doc.data());
-  
+
                 // Find the current user's data in the users array
                 return users.find(user => user.userId === currentUser.uid);
               })
             );
         } else return of(null);
-        
+
       })
     );
   }
@@ -92,8 +93,8 @@ export class DashboardChannelAddMessageComponent implements OnInit {
         console.log(currentUser)
       }
     });
-  }
-}
+  } }
+
 
 
 
