@@ -24,7 +24,7 @@ export class DashboardChannelComponent implements OnInit {
   channel: Channel = new Channel();
 
 
-  ngOnInit() {
+  ngOnInit() {    
     this.route.paramMap.subscribe(paramMap => {
       this.channelId = paramMap.get('channelId');
       this.getChannel();
@@ -33,6 +33,7 @@ export class DashboardChannelComponent implements OnInit {
   }
 
   getChannel() {
+   
     this.firestore
       .collection('channels')
       .doc(this.channelId)

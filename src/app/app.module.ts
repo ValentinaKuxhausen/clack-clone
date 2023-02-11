@@ -42,10 +42,11 @@ import { DashboardChannelComponent } from './dashboard/dashboard-channel/dashboa
 import { DashboardEditChannelComponent } from './dashboard/dashboard-edit-channel/dashboard-edit-channel.component';
 import { DashboardAddMessageComponent } from './dashboard/dashboard-add-message/dashboard-add-message.component';
 import { DashboardChannelAddMessageComponent } from './dashboard/dashboard-channel-add-message/dashboard-channel-add-message.component';
-
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     NavbarComponent,
     NavbarChannelsComponent,
@@ -65,7 +66,7 @@ import { DashboardChannelAddMessageComponent } from './dashboard/dashboard-chann
     DashboardAddMessageComponent,
     DashboardChannelAddMessageComponent
   ],
-  imports: [
+  imports: [   
     AppRoutingModule,
     AngularFireModule,
     AngularFirestoreModule,
@@ -95,7 +96,8 @@ import { DashboardChannelAddMessageComponent } from './dashboard/dashboard-chann
 
   ],
 
-  providers: [AuthService],
+  providers:   
+  [AuthService, DatePipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
