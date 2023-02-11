@@ -27,7 +27,7 @@ export class DashboardChannelAddMessageComponent implements OnInit {
   channel: Channel = new Channel();
 
 
-  ngOnInit() {    
+  ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
       this.channelId = paramMap.get('channelId');
       this.getChannel();
@@ -45,45 +45,47 @@ export class DashboardChannelAddMessageComponent implements OnInit {
   }
 
 
-   addMessage() {
-    this.getCurrentUser().subscribe(userData => {
-      let id = userData[0];
-      let userName = userData[1];
-      this.newMessage = new Message({
-        text: this.messageTextInput,
-        time: this.getData(),
-        userId: id,
-        userName: userName
-      });
-      console.log(this.newMessage);
-    });
-  }
+  addMessage() {
+    let userData = this.getCurrentUser();
+    let id = userData[0];
+    let userName = userData[1];
+    this.newMessage = new Message({
+      text: this.messageTextInput,
+      time: this.getData(),
+      userId: id,
+      userName: userName
+    })
+    console.log(this.newMessage);
 
+  }
 
   getData() {
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
   }
 
   getCurrentUser() {
-    return this.afAuth.authState.pipe(
-      switchMap(currentUser => {
-        if (currentUser) {
-          return this.firestore
-            .collection('users')
-            .get()
-            .pipe(
-              map(snapshot => {
-                // Get all the users data from Firestore
-                const users: any = snapshot.docs.map(doc => doc.data());
+    debugger
+    let currentUserData;
+    this.afAuth.authState.subscribe(currentUser => {
+      if (currentUser) {
+        this.firestore
+          .collection('users')
+          .get()
+          .subscribe(snapshot => {
+            // Get all the users data from Firestore
+            const users: any = snapshot.docs.map(doc => doc.data());
 
-                // Find the current user's data in the users array
-                return users.find(user => user.userId === currentUser.uid);
-              })
-            );
-        } else return of(null);
+            // Find the current user's data in the users array
+            currentUserData = users.find(user => user.userId === currentUser.uid);
 
-      })
-    );
+            // Do something with the current user's data
+            /*   for (const property in currentUserData) {
+  
+                console.log(property + ': ' + currentUserData[property]);
+              } */
+          });
+      }
+    });
   }
 
 
@@ -93,7 +95,8 @@ export class DashboardChannelAddMessageComponent implements OnInit {
         console.log(currentUser)
       }
     });
-  } }
+  }
+}
 
 
 
