@@ -47,11 +47,13 @@ export class DashboardChannelAddMessageComponent implements OnInit {
 
   addMessage() {
     let userData = this.getCurrentUser();
+    let date = this.getData()
+    console.log(date)
     let id = userData[0];
     let userName = userData[1];
     this.newMessage = new Message({
       text: this.messageTextInput,
-      time: this.getData(),
+      time: date,
       userId: id,
       userName: userName
     })
@@ -61,11 +63,10 @@ export class DashboardChannelAddMessageComponent implements OnInit {
 
   getData() {
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
+    return this.myDate;
   }
 
   getCurrentUser() {
-    debugger
-    let currentUserData;
     this.afAuth.authState.subscribe(currentUser => {
       if (currentUser) {
         this.firestore
@@ -76,9 +77,9 @@ export class DashboardChannelAddMessageComponent implements OnInit {
             const users: any = snapshot.docs.map(doc => doc.data());
 
             // Find the current user's data in the users array
-            currentUserData = users.find(user => user.userId === currentUser.uid);
+            const currentUserData = users.find(user => user.userId === currentUser.uid);
 
-            // Do something with the current user's data
+            // Get the properties of the current user
             /*   for (const property in currentUserData) {
   
                 console.log(property + ': ' + currentUserData[property]);
