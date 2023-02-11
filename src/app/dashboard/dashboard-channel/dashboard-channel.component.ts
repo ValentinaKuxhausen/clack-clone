@@ -4,7 +4,8 @@ import { map, tap } from 'rxjs';
 import { ChannelsService } from 'src/app/services/channels.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Channel } from 'src/models/channel.class';
-
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class DashboardChannelComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute, public channelService: ChannelsService, private firestore: AngularFirestore) { }
+  constructor(private route: ActivatedRoute, public channelService: ChannelsService, private firestore: AngularFirestore, 
+       private afAuth: AngularFireAuth) { }
 
   channelId = '';
   channel: Channel = new Channel();
@@ -39,5 +41,11 @@ export class DashboardChannelComponent implements OnInit {
         this.channel = new Channel(channel);
       })
   }
+
+
+
+  
+
+
 }
 

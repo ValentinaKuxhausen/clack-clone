@@ -25,7 +25,4 @@ export class User {
             displayName: this.username,
         };
     }
-
-
-
 }
