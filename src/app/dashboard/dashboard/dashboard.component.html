@@ -4,8 +4,6 @@
     <form class="header">
       <mat-icon class="time">access_time</mat-icon>
       <input type="text" placeholder="Searchbar" [formControl]="control" [matAutocomplete]="auto" class="search-input">
-
-
       <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="headerMenu">
           <mat-icon class="user-icon" aria-hidden="false" aria-label="Example home icon"
             fontIcon="person-circle"></mat-icon>
@@ -30,6 +28,9 @@
   </div>
   <app-dashboard-profile></app-dashboard-profile>
 </nav>
+
+
+<!-- NAVBAR & ROUTER (CHANNEL DASHBOARD/ MASSEGE DASHBOARD & DASHBOARD PROFILE) -->
 <div class="nav-dash-container">
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
