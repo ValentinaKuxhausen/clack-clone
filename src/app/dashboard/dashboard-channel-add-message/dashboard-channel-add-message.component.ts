@@ -8,6 +8,8 @@ import { Message } from 'src/models/channel.class';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DatePipe } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-dashboard-channel-add-message',
@@ -32,6 +34,9 @@ export class DashboardChannelAddMessageComponent implements OnInit {
       this.channelId = paramMap.get('channelId');
       this.getChannel();
     })
+
+
+
   }
 
   getChannel() {
@@ -45,20 +50,20 @@ export class DashboardChannelAddMessageComponent implements OnInit {
   }
 
 
-  addMessage() {
-    let userData = this.getCurrentUser();
+  addMessage(userData) {
+
     let date = this.getData()
-    console.log(date)
-    let id = userData[0];
-    let userName = userData[1];
+    let userId = userData.userId
+    let userName
+    if (userData.name) userName = userData.name;
+    else userName = userData.email;
     this.newMessage = new Message({
       text: this.messageTextInput,
       time: date,
-      userId: id,
+      userId: userId,
       userName: userName
     })
     console.log(this.newMessage);
-
   }
 
   getData() {
@@ -78,12 +83,7 @@ export class DashboardChannelAddMessageComponent implements OnInit {
 
             // Find the current user's data in the users array
             const currentUserData = users.find(user => user.userId === currentUser.uid);
-
-            // Get the properties of the current user
-            /*   for (const property in currentUserData) {
-  
-                console.log(property + ': ' + currentUserData[property]);
-              } */
+            this.addMessage(currentUserData)
           });
       }
     });

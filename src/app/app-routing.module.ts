@@ -10,6 +10,7 @@ import { VerifyEmailComponent } from './login-register/verify-email/verify-email
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DashboardChannelComponent } from './dashboard/dashboard-channel/dashboard-channel.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
