@@ -47,11 +47,10 @@ export class DashboardChannelAddMessageComponent implements OnInit {
       .subscribe((channel: any) => {
         this.channel = new Channel(channel);
       })
-  }
+  }40
 
 
   addMessage(userData) {
-
     let date = this.getData()
     let userId = userData.userId
     let userName

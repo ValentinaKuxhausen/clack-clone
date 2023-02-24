@@ -44,6 +44,6 @@ export class Message {
         this.text = obj ? obj.text : '';
         this.time = obj ? obj.time : '';
         this.userId = obj ? obj.userId : '';
-        this.userName = obj ? obj.userId : '';
+        this.userName = obj ? obj.userName : '';
     }
 }
