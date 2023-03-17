@@ -43,6 +43,7 @@ import { DashboardEditChannelComponent } from './dashboard/dashboard-edit-channe
 import { DashboardAddMessageComponent } from './dashboard/dashboard-add-message/dashboard-add-message.component';
 import { DashboardChannelAddMessageComponent } from './dashboard/dashboard-channel-add-message/dashboard-channel-add-message.component';
 import { DatePipe } from '@angular/common';
+import { DashboardChannelMessagesComponent } from './dashboard/dashboard-channel-messages/dashboard-channel-messages.component';
 
 
 
@@ -66,7 +67,8 @@ import { DatePipe } from '@angular/common';
     DashboardChannelComponent,
     DashboardEditChannelComponent,
     DashboardAddMessageComponent,
-    DashboardChannelAddMessageComponent
+    DashboardChannelAddMessageComponent,
+    DashboardChannelMessagesComponent
   ],
   imports: [   
     AppRoutingModule,

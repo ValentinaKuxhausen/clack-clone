@@ -33,6 +33,9 @@ export class DashboardChannelAddMessageComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.channelId = paramMap.get('channelId');
       this.getChannel();
+
+
+
     })
 
 
@@ -47,7 +50,7 @@ export class DashboardChannelAddMessageComponent implements OnInit {
       .subscribe((channel: any) => {
         this.channel = new Channel(channel);
       })
-  }40
+  }
 
 
   addMessage(userData) {
@@ -70,30 +73,24 @@ export class DashboardChannelAddMessageComponent implements OnInit {
     return this.myDate;
   }
 
-  getCurrentUser() {
-    this.afAuth.authState.subscribe(currentUser => {
-      if (currentUser) {
-        this.firestore
-          .collection('users')
-          .get()
-          .subscribe(snapshot => {
-            // Get all the users data from Firestore
-            const users: any = snapshot.docs.map(doc => doc.data());
-
-            // Find the current user's data in the users array
-            const currentUserData = users.find(user => user.userId === currentUser.uid);
-            this.addMessage(currentUserData)
-          });
-      }
-    });
+  getUser(currentUser) {
+    if (currentUser) {
+      this.firestore
+        .collection('users')
+        .get()
+        .subscribe(snapshot => {
+          // Get all the users data from Firestore
+          const users: any = snapshot.docs.map(doc => doc.data());
+          // Find the current user's data in the users array
+          const currentUserData = users.find(user => user.userId === currentUser.uid);
+          this.addMessage(currentUserData)          
+        });
+    }
   }
 
-
-  sendMessage() {
+  getCurrentUser() {
     this.afAuth.authState.subscribe(currentUser => {
-      if (currentUser) {
-        console.log(currentUser)
-      }
+      this.getUser(currentUser);
     });
   }
 }
